@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/core/theme/app_theme.dart';
-import 'package:my_portfolio/core/utils/cursor_service.dart';
-import 'package:my_portfolio/core/utils/responsive.dart';
-import 'package:my_portfolio/presentation/pages/about/about_page.dart';
-import 'package:my_portfolio/presentation/pages/blog/blog_page.dart';
-import 'package:my_portfolio/presentation/pages/contact/contact_page.dart';
-import 'package:my_portfolio/presentation/pages/education/education_page.dart';
-import 'package:my_portfolio/presentation/pages/portfolio/portfolio_page.dart';
-import 'package:my_portfolio/presentation/pages/resume/resume_page.dart';
-import 'package:my_portfolio/presentation/widgets/navbar/navbar.dart';
-import 'package:my_portfolio/presentation/widgets/sidebar/sidebar.dart';
+import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
+import 'package:nahid_hasan_noyon/core/utils/cursor_service.dart';
+import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
+import 'package:nahid_hasan_noyon/presentation/pages/about/about_page.dart';
+import 'package:nahid_hasan_noyon/presentation/pages/blog/blog_page.dart';
+import 'package:nahid_hasan_noyon/presentation/pages/contact/contact_page.dart';
+import 'package:nahid_hasan_noyon/presentation/pages/education/education_page.dart';
+import 'package:nahid_hasan_noyon/presentation/pages/portfolio/portfolio_page.dart';
+import 'package:nahid_hasan_noyon/presentation/pages/resume/resume_page.dart';
+import 'package:nahid_hasan_noyon/presentation/widgets/navbar/navbar.dart';
+import 'package:nahid_hasan_noyon/presentation/widgets/sidebar/sidebar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

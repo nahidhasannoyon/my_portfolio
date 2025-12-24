@@ -23,11 +23,11 @@
 
   // Image paths
   const IMAGES = {
-    jerry: "assets/images/jerry.png",
-    tomHead: "assets/images/tom-head.png",
-    fighting1: "assets/images/tom-and-jerry-fighting-1.png",
-    fighting2: "assets/images/tom-and-jerry-fighting-2.png",
-    jerryOnHead: "assets/images/jerrey-on-toms-head.png",
+    jerry: "assets/assets/images/jerry.png",
+    tomHead: "assets/assets/images/tom-head.png",
+    fighting1: "assets/assets/images/tom-and-jerry-fighting-1.png",
+    fighting2: "assets/assets/images/tom-and-jerry-fighting-2.png",
+    jerryOnHead: "assets/assets/images/jerrey-on-toms-head.png",
   };
 
   // State variables

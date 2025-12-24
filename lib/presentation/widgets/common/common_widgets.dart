@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/core/theme/app_theme.dart';
+import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
 
 class GradientBox extends StatelessWidget {
   const GradientBox({

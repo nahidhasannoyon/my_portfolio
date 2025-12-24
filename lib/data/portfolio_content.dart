@@ -1,4 +1,4 @@
-import 'package:my_portfolio/data/models/portfolio_data.dart';
+import 'package:nahid_hasan_noyon/data/models/portfolio_data.dart';
 
 class PortfolioContent {
   static const PersonInfo person = PersonInfo(

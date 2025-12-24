@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/core/theme/app_theme.dart';
-import 'package:my_portfolio/core/utils/responsive.dart';
-import 'package:my_portfolio/data/models/portfolio_data.dart';
-import 'package:my_portfolio/data/portfolio_content.dart';
-import 'package:my_portfolio/presentation/widgets/common/common_widgets.dart';
+import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
+import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
+import 'package:nahid_hasan_noyon/data/models/portfolio_data.dart';
+import 'package:nahid_hasan_noyon/data/portfolio_content.dart';
+import 'package:nahid_hasan_noyon/presentation/widgets/common/common_widgets.dart';
 
 class ResumePage extends StatelessWidget {
   const ResumePage({super.key});
