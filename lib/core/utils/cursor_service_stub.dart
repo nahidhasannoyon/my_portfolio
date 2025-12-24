@@ -1,0 +1,2 @@
+void disableCursorImpl() {}
+void enableCursorImpl() {}

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/core/theme/app_theme.dart';
+import 'package:my_portfolio/core/utils/cursor_service.dart';
 import 'package:my_portfolio/core/utils/responsive.dart';
 import 'package:my_portfolio/presentation/pages/about/about_page.dart';
 import 'package:my_portfolio/presentation/pages/blog/blog_page.dart';
 import 'package:my_portfolio/presentation/pages/contact/contact_page.dart';
+import 'package:my_portfolio/presentation/pages/education/education_page.dart';
 import 'package:my_portfolio/presentation/pages/portfolio/portfolio_page.dart';
 import 'package:my_portfolio/presentation/pages/resume/resume_page.dart';
 import 'package:my_portfolio/presentation/widgets/navbar/navbar.dart';
@@ -21,6 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> _pages = const [
     AboutPage(),
+    EducationPage(),
     ResumePage(),
     PortfolioPage(),
     BlogPage(),
@@ -53,12 +56,20 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Sidebar
-              const SizedBox(width: 280, child: Sidebar()),
+              MouseRegion(
+                onEnter: (_) => disableCursor(),
+                onExit: (_) => enableCursor(),
+                child: const SizedBox(width: 280, child: Sidebar()),
+              ),
               const SizedBox(width: 25),
               // Main content
               Expanded(
-                child: Stack(
-                  children: [_buildMainContent(), _buildDesktopNavBar()],
+                child: MouseRegion(
+                  onEnter: (_) => disableCursor(),
+                  onExit: (_) => enableCursor(),
+                  child: Stack(
+                    children: [_buildMainContent(), _buildDesktopNavBar()],
+                  ),
                 ),
               ),
             ],
@@ -87,15 +98,23 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             child: Column(
               children: [
-                const Sidebar(),
+                MouseRegion(
+                  onEnter: (_) => disableCursor(),
+                  onExit: (_) => enableCursor(),
+                  child: const Sidebar(),
+                ),
                 SizedBox(
                   height: Responsive.getValue(context, mobile: 15, tablet: 30),
                 ),
-                Stack(
-                  children: [
-                    _buildMainContent(),
-                    if (isDesktopOrLarger) _buildDesktopNavBar(),
-                  ],
+                MouseRegion(
+                  onEnter: (_) => disableCursor(),
+                  onExit: (_) => enableCursor(),
+                  child: Stack(
+                    children: [
+                      _buildMainContent(),
+                      if (isDesktopOrLarger) _buildDesktopNavBar(),
+                    ],
+                  ),
                 ),
               ],
             ),
