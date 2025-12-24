@@ -17,14 +17,13 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 'latest'  # Use specific version if needed, e.g., '3.16.0'
+          flutter-version: 'stable'  # Use specific version if needed, e.g., '3.16.0'
 
       - name: Install dependencies
         run: flutter pub get
 
       - name: Build web app
-        run: flutter build web --release --base-href /my_portfolio/
-        # Replace 'my_portfolio' with your actual repository name if different
+        run: flutter build web --release --base-href /
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
