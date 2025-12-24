@@ -1,4 +1,8 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_confetti/flutter_confetti.dart';
 import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
 import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
 import 'package:nahid_hasan_noyon/presentation/widgets/common/common_widgets.dart';
@@ -182,6 +186,49 @@ class _ContactPageState extends State<ContactPage> {
               isFullWidth: !isDesktop,
               onPressed: _isFormValid
                   ? () {
+                      double randomInRange(double min, double max) {
+                        return min + Random().nextDouble() * (max - min);
+                      }
+
+                      const int total = 16;
+                      int progress = 0;
+
+                      Timer.periodic(const Duration(milliseconds: 250), (
+                        timer,
+                      ) {
+                        progress++;
+
+                        if (progress >= total) {
+                          timer.cancel();
+                          return;
+                        }
+
+                        final int count = ((1 - progress / total) * 50).toInt();
+
+                        Confetti.launch(
+                          context,
+                          options: ConfettiOptions(
+                            particleCount: count,
+                            startVelocity: 30,
+                            spread: 360,
+                            ticks: 60,
+                            x: randomInRange(0.1, 0.3),
+                            y: Random().nextDouble() - 0.2,
+                          ),
+                        );
+                        Confetti.launch(
+                          context,
+                          options: ConfettiOptions(
+                            particleCount: count,
+                            startVelocity: 30,
+                            spread: 360,
+                            ticks: 60,
+                            x: randomInRange(0.7, 0.9),
+                            y: Random().nextDouble() - 0.2,
+                          ),
+                        );
+                      });
+
                       // Handle form submission
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(

@@ -99,12 +99,12 @@ class _SplashScreenState extends State<SplashScreen>
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // DE text
+            // De text
             AnimatedOpacity(
               opacity: _showDE ? 1.0 : 0.0,
               duration: const Duration(milliseconds: 400),
               child: const Text(
-                'DE',
+                'De',
                 style: TextStyle(
                   fontSize: 80,
                   fontWeight: FontWeight.bold,
@@ -113,7 +113,7 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
               ),
             ),
-            // V that rotates to >
+            // v that rotates to >
             AnimatedOpacity(
               opacity: _showV ? 1.0 : 0.0,
               duration: const Duration(milliseconds: 400),
@@ -122,7 +122,7 @@ class _SplashScreenState extends State<SplashScreen>
                 child: Transform.rotate(
                   angle: _rotation,
                   child: const Text(
-                    'V',
+                    'v',
                     style: TextStyle(
                       fontSize: 80,
                       fontWeight: FontWeight.bold,
