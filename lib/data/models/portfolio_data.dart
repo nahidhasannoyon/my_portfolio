@@ -76,6 +76,12 @@ class SkillItem {
   final int percentage;
 }
 
+class TechnicalSkillCategory {
+  const TechnicalSkillCategory({required this.category, required this.skills});
+  final String category;
+  final String skills;
+}
+
 class ProjectItem {
   const ProjectItem({
     required this.title,

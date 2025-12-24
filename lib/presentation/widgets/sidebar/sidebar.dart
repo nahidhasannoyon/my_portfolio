@@ -4,6 +4,7 @@ import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
 import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
 import 'package:nahid_hasan_noyon/data/models/portfolio_data.dart';
 import 'package:nahid_hasan_noyon/data/portfolio_content.dart';
+import 'package:svg_flutter/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Sidebar extends StatefulWidget {
@@ -346,7 +347,7 @@ class _SidebarState extends State<Sidebar> {
     switch (contact.action) {
       case ContactAction.copyEmail:
         interactiveWidget = Tooltip(
-          message: text,
+          message: 'Click to copy: $text',
           child: GestureDetector(
             onTap: () => _copyToClipboard(context, text),
             child: textWidget,
@@ -395,28 +396,31 @@ class _SidebarState extends State<Sidebar> {
   }
 
   Widget _buildSocialList(PersonInfo person) {
-    final socialIcons = {
-      'github': Icons.code,
-      'linkedin': Icons.business,
-      'whatsapp': Icons.message,
-    };
-
     return Row(
       mainAxisAlignment: Responsive.isLargeDesktop(context)
           ? MainAxisAlignment.center
           : MainAxisAlignment.start,
       children: person.socialLinks.map<Widget>((social) {
         return Padding(
-          padding: const EdgeInsets.only(right: 15),
+          padding: const EdgeInsets.only(right: 20),
           child: GestureDetector(
             onTap: () => _launchUrl(social.url),
             child: MouseRegion(
               cursor: SystemMouseCursors.click,
-              child: Icon(
-                socialIcons[social.icon] ?? Icons.link,
-                color: AppColors.lightGray70,
-                size: 18,
-              ),
+              child: social.icon is IconData
+                  ? Icon(
+                      social.icon as IconData,
+                      color: AppColors.lightGray70,
+                      size: 24,
+                    )
+                  : social.icon.contains('svg')
+                  ? SvgPicture.asset(social.icon, width: 24, height: 24)
+                  : Image.asset(
+                      social.icon,
+                      width: 24,
+                      height: 24,
+                      color: AppColors.lightGray70,
+                    ),
             ),
           ),
         );

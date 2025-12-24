@@ -12,17 +12,17 @@ class PortfolioContent {
       SocialLink(
         name: 'GitHub',
         url: 'https://github.com/NahidHasanNoyon',
-        icon: 'github',
+        icon: 'assets/icons/github.svg',
       ),
       SocialLink(
         name: 'LinkedIn',
         url: 'https://linkedin.com/in/NahidHasanNoyon',
-        icon: 'linkedin',
+        icon: 'assets/icons/linkedIn.svg',
       ),
       SocialLink(
         name: 'WhatsApp',
         url: 'https://wa.me/8801533019893',
-        icon: 'whatsapp',
+        icon: 'assets/icons/whatsapp.svg',
       ),
     ],
   );
@@ -168,6 +168,54 @@ class PortfolioContent {
       description:
           'Designed and developed the BAIUST Transport Schedule App using Flutter, featuring a digital verification system for authorized bus travel, enhancing convenience and security for Internals.',
     ),
+  ];
+
+  static const List<TechnicalSkillCategory> technicalSkills = [
+    TechnicalSkillCategory(category: 'Languages', skills: 'Dart'),
+    TechnicalSkillCategory(category: 'Frameworks', skills: 'Flutter'),
+    TechnicalSkillCategory(
+      category: 'State Management',
+      skills: 'GetX, Provider',
+    ),
+    TechnicalSkillCategory(
+      category: 'Architecture',
+      skills: 'Clean Architecture, MVVM, MVC, Modular Architecture',
+    ),
+    TechnicalSkillCategory(
+      category: 'Database & Storage',
+      skills: 'Hive, Shared Preferences, Firebase, Flutter Secure Storage',
+    ),
+    TechnicalSkillCategory(
+      category: 'Backend/Cloud',
+      skills: 'REST API, Firebase Auth, Firestore, Cloud Messaging, Socket IO',
+    ),
+    TechnicalSkillCategory(
+      category: 'Tools',
+      skills:
+          'Android Studio, VS Code, Postman, Figma, Git, Github, Trello, ClickUP',
+    ),
+    TechnicalSkillCategory(
+      category: 'APIs',
+      skills:
+          'Google Maps, Payment Gateways(Bkash, Stripe), Third Party API, Google SSO',
+    ),
+    TechnicalSkillCategory(
+      category: 'Others',
+      skills:
+          'Push Notifications, Localization, App Optimization, Animations, Deep Linking',
+    ),
+    TechnicalSkillCategory(
+      category: 'Testing',
+      skills: 'Unit Testing, Widget Testing, Integration Testing',
+    ),
+  ];
+
+  static const List<String> softSkills = [
+    'Problem Solving',
+    'Team Collaboration',
+    'Agile Development',
+    'Time Management',
+    'Clean Code Mindset',
   ];
 
   static const List<SkillItem> skills = [

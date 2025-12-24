@@ -6,8 +6,9 @@ import 'package:nahid_hasan_noyon/presentation/pages/about/about_page.dart';
 import 'package:nahid_hasan_noyon/presentation/pages/blog/blog_page.dart';
 import 'package:nahid_hasan_noyon/presentation/pages/contact/contact_page.dart';
 import 'package:nahid_hasan_noyon/presentation/pages/education/education_page.dart';
+import 'package:nahid_hasan_noyon/presentation/pages/experience/experience_page.dart';
 import 'package:nahid_hasan_noyon/presentation/pages/portfolio/portfolio_page.dart';
-import 'package:nahid_hasan_noyon/presentation/pages/resume/resume_page.dart';
+import 'package:nahid_hasan_noyon/presentation/pages/skills/skills_page.dart';
 import 'package:nahid_hasan_noyon/presentation/widgets/navbar/navbar.dart';
 import 'package:nahid_hasan_noyon/presentation/widgets/sidebar/sidebar.dart';
 
@@ -24,7 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _pages = const [
     AboutPage(),
     EducationPage(),
-    ResumePage(),
+    SkillsPage(),
+    ExperiencePage(),
     PortfolioPage(),
     BlogPage(),
     ContactPage(),
@@ -51,25 +53,35 @@ class _HomeScreenState extends State<HomeScreen> {
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 1300),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 15),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          padding: const EdgeInsets.only(bottom: 30, left: 15, right: 15),
+          child: Column(
             children: [
-              // Sidebar
               MouseRegion(
                 onEnter: (_) => disableCursor(),
                 onExit: (_) => enableCursor(),
-                child: const SizedBox(width: 280, child: Sidebar()),
+                child: _buildDesktopNavBar(),
               ),
-              const SizedBox(width: 25),
-              // Main content
+              const SizedBox(height: 15),
               Expanded(
-                child: MouseRegion(
-                  onEnter: (_) => disableCursor(),
-                  onExit: (_) => enableCursor(),
-                  child: Stack(
-                    children: [_buildMainContent(), _buildDesktopNavBar()],
-                  ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Sidebar
+                    MouseRegion(
+                      onEnter: (_) => disableCursor(),
+                      onExit: (_) => enableCursor(),
+                      child: const SizedBox(width: 280, child: Sidebar()),
+                    ),
+                    const SizedBox(width: 25),
+                    // Main content
+                    Expanded(
+                      child: MouseRegion(
+                        onEnter: (_) => disableCursor(),
+                        onExit: (_) => enableCursor(),
+                        child: Stack(children: [_buildMainContent()]),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

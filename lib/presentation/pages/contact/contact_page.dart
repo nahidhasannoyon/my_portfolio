@@ -1,4 +1,10 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_confetti/flutter_confetti.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
 import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
 import 'package:nahid_hasan_noyon/presentation/widgets/common/common_widgets.dart';
@@ -63,6 +69,8 @@ class _ContactPageState extends State<ContactPage> {
   }
 
   Widget _buildMap(BuildContext context) {
+    const LatLng locationCoords = LatLng(23.7974311, 90.421395);
+
     return Container(
       height: Responsive.getValue(context, mobile: 250, tablet: 380),
       width: double.infinity,
@@ -73,50 +81,37 @@ class _ContactPageState extends State<ContactPage> {
         ),
       ),
       clipBehavior: Clip.antiAlias,
-      child: ColorFiltered(
-        colorFilter: const ColorFilter.matrix([
-          -1, 0, 0, 0, 255, //
-          0, -1, 0, 0, 255, //
-          0, 0, -1, 0, 255, //
-          0, 0, 0, 1, 0, //
-        ]),
-        child: Container(
-          color: AppColors.jet,
-          child: Stack(
-            children: [
-              Positioned.fill(
+      child: FlutterMap(
+        options: const MapOptions(initialCenter: locationCoords),
+        children: [
+          TileLayer(
+            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+            userAgentPackageName: 'com.example.app',
+          ),
+          MarkerLayer(
+            markers: [
+              Marker(
+                point: locationCoords,
+                width: 40,
+                height: 40,
                 child: Container(
                   decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [AppColors.eerieBlack1, AppColors.jet],
-                    ),
+                    color: AppColors.orangeYellowCrayola,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(color: Colors.black26, blurRadius: 4),
+                    ],
                   ),
-                ),
-              ),
-              const Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.location_on,
-                      size: 50,
-                      color: AppColors.orangeYellowCrayola,
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      'Sacramento, California, USA',
-                      style: AppTextStyles.bodyText,
-                    ),
-                    SizedBox(height: 5),
-                    Text('Map view', style: AppTextStyles.smallText),
-                  ],
+                  child: const Icon(
+                    Icons.location_on,
+                    color: AppColors.jet,
+                    size: 24,
+                  ),
                 ),
               ),
             ],
           ),
-        ),
+        ],
       ),
     );
   }
@@ -182,6 +177,49 @@ class _ContactPageState extends State<ContactPage> {
               isFullWidth: !isDesktop,
               onPressed: _isFormValid
                   ? () {
+                      double randomInRange(double min, double max) {
+                        return min + Random().nextDouble() * (max - min);
+                      }
+
+                      const int total = 16;
+                      int progress = 0;
+
+                      Timer.periodic(const Duration(milliseconds: 250), (
+                        timer,
+                      ) {
+                        progress++;
+
+                        if (progress >= total) {
+                          timer.cancel();
+                          return;
+                        }
+
+                        final int count = ((1 - progress / total) * 50).toInt();
+
+                        Confetti.launch(
+                          context,
+                          options: ConfettiOptions(
+                            particleCount: count,
+                            startVelocity: 30,
+                            spread: 360,
+                            ticks: 60,
+                            x: randomInRange(0.1, 0.3),
+                            y: Random().nextDouble() - 0.2,
+                          ),
+                        );
+                        Confetti.launch(
+                          context,
+                          options: ConfettiOptions(
+                            particleCount: count,
+                            startVelocity: 30,
+                            spread: 360,
+                            ticks: 60,
+                            x: randomInRange(0.7, 0.9),
+                            y: Random().nextDouble() - 0.2,
+                          ),
+                        );
+                      });
+
                       // Handle form submission
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(

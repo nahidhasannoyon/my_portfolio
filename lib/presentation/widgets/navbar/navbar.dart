@@ -14,7 +14,8 @@ class NavBar extends StatelessWidget {
   static const List<String> items = [
     'About',
     'Education',
-    'Resume',
+    'Skills',
+    'Experience',
     'Portfolio',
     'Blog',
     'Contact',
@@ -31,9 +32,8 @@ class NavBar extends StatelessWidget {
   }
 
   Widget _buildDesktopNav(BuildContext context) {
-    return Positioned(
-      top: 0,
-      right: 0,
+    return Align(
+      alignment: Alignment.topRight,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: const BoxDecoration(

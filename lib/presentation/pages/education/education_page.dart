@@ -30,10 +30,8 @@ class EducationPage extends StatelessWidget {
             context,
             title: 'College',
             icon: Icons.book_outlined,
-            items: PortfolioContent.experience,
+            items: PortfolioContent.education,
           ),
-          const SizedBox(height: 30),
-          _buildSkills(context),
         ],
       ),
     );
@@ -70,27 +68,6 @@ class EducationPage extends StatelessWidget {
                 isLast: index == items.length - 1,
               );
             }),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildSkills(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text('My skills', style: AppTextStyles.h3),
-        const SizedBox(height: 20),
-        GradientBox(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: PortfolioContent.skills.map((skill) {
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 15),
-                child: _SkillBar(skill: skill),
-              );
-            }).toList(),
           ),
         ),
       ],
@@ -148,49 +125,6 @@ class _TimelineItemWidget extends StatelessWidget {
                   style: AppTextStyles.bodyText.copyWith(fontSize: 14),
                 ),
               ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _SkillBar extends StatelessWidget {
-  const _SkillBar({required this.skill});
-  final SkillItem skill;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(skill.name, style: AppTextStyles.h5),
-            Text(
-              '${skill.percentage}%',
-              style: AppTextStyles.bodyText.copyWith(fontSize: 13),
-            ),
-          ],
-        ),
-        const SizedBox(height: 8),
-        Container(
-          height: 8,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: AppColors.jet,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: FractionallySizedBox(
-            alignment: Alignment.centerLeft,
-            widthFactor: skill.percentage / 100,
-            child: Container(
-              decoration: BoxDecoration(
-                gradient: AppColors.textGradientYellow,
-                borderRadius: BorderRadius.circular(10),
-              ),
             ),
           ),
         ),
