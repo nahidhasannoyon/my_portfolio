@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/core/theme/app_theme.dart';
-import 'package:my_portfolio/core/utils/responsive.dart';
+import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
+import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({
