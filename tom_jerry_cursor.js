@@ -23,11 +23,13 @@
 
   // Image paths
   const IMAGES = {
-    jerry: "assets/assets/images/jerry.png",
-    tomHead: "assets/assets/images/tom-head.png",
-    fighting1: "assets/assets/images/tom-and-jerry-fighting-1.png",
-    fighting2: "assets/assets/images/tom-and-jerry-fighting-2.png",
-    jerryOnHead: "assets/assets/images/jerrey-on-toms-head.png",
+    jerry: "assets/assets/images/for_mouse_cursor/jerry.png",
+    tomHead: "assets/assets/images/for_mouse_cursor/tom-head.png",
+    fighting1:
+      "assets/assets/images/for_mouse_cursor/tom-and-jerry-fighting-1.png",
+    fighting2:
+      "assets/assets/images/for_mouse_cursor/tom-and-jerry-fighting-2.png",
+    jerryOnHead: "assets/assets/images/for_mouse_cursor/jerry-on-toms-head.png",
   };
 
   // State variables
