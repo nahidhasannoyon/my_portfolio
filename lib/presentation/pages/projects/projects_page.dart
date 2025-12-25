@@ -5,14 +5,14 @@ import 'package:nahid_hasan_noyon/data/models/portfolio_data.dart';
 import 'package:nahid_hasan_noyon/data/portfolio_content.dart';
 import 'package:nahid_hasan_noyon/presentation/widgets/common/common_widgets.dart';
 
-class PortfolioPage extends StatefulWidget {
-  const PortfolioPage({super.key});
+class ProjectsPage extends StatefulWidget {
+  const ProjectsPage({super.key});
 
   @override
-  State<PortfolioPage> createState() => _PortfolioPageState();
+  State<ProjectsPage> createState() => _ProjectsPageState();
 }
 
-class _PortfolioPageState extends State<PortfolioPage> {
+class _ProjectsPageState extends State<ProjectsPage> {
   String _selectedCategory = 'All';
   bool _isDropdownOpen = false;
 
@@ -36,7 +36,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const ArticleTitle(title: 'Portfolio'),
+          const ArticleTitle(title: 'Projects'),
           const SizedBox(height: 30),
           _buildFilter(context),
           const SizedBox(height: 25),

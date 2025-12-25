@@ -59,15 +59,32 @@ class ClientItem {
   final String url;
 }
 
-class TimelineItem {
-  const TimelineItem({
-    required this.title,
+class ProfessionalTimelineItem {
+  const ProfessionalTimelineItem({
+    required this.company,
+    required this.location,
+    required this.role,
     required this.dateRange,
     required this.description,
   });
-  final String title;
+  final String company;
+  final String location;
+  final String role;
   final String dateRange;
-  final String description;
+  final List<String> description;
+}
+
+class EducationTimelineItem {
+  const EducationTimelineItem({
+    required this.course,
+    required this.dateRange,
+    required this.institution,
+    required this.location,
+  });
+  final String course;
+  final String dateRange;
+  final String institution;
+  final String location;
 }
 
 class SkillItem {

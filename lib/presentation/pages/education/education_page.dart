@@ -22,15 +22,22 @@ class EducationPage extends StatelessWidget {
           _buildTimeline(
             context,
             title: 'University',
-            icon: Icons.book_outlined,
-            items: PortfolioContent.education,
+            icon: Icons.school_outlined,
+            items: PortfolioContent.universityEducation,
           ),
           const SizedBox(height: 30),
           _buildTimeline(
             context,
             title: 'College',
             icon: Icons.book_outlined,
-            items: PortfolioContent.education,
+            items: PortfolioContent.collegeEducation,
+          ),
+          const SizedBox(height: 30),
+          _buildTimeline(
+            context,
+            title: 'School',
+            icon: Icons.menu_book_outlined,
+            items: PortfolioContent.schoolEducation,
           ),
         ],
       ),
@@ -41,7 +48,7 @@ class EducationPage extends StatelessWidget {
     BuildContext context, {
     required String title,
     required IconData icon,
-    required List<TimelineItem> items,
+    required List<EducationTimelineItem> items,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,7 +70,7 @@ class EducationPage extends StatelessWidget {
           ),
           child: Column(
             children: List.generate(items.length, (index) {
-              return _TimelineItemWidget(
+              return _EducationItemWidget(
                 item: items[index],
                 isLast: index == items.length - 1,
               );
@@ -75,9 +82,9 @@ class EducationPage extends StatelessWidget {
   }
 }
 
-class _TimelineItemWidget extends StatelessWidget {
-  const _TimelineItemWidget({required this.item, required this.isLast});
-  final TimelineItem item;
+class _EducationItemWidget extends StatelessWidget {
+  const _EducationItemWidget({required this.item, required this.isLast});
+  final EducationTimelineItem item;
   final bool isLast;
 
   @override
@@ -106,23 +113,42 @@ class _TimelineItemWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  item.title,
-                  style: AppTextStyles.h4.copyWith(fontSize: 14, height: 1.3),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      item.course,
+                      style: AppTextStyles.h4.copyWith(
+                        fontSize: 14,
+                        height: 1.3,
+                      ),
+                    ),
+                    Text(
+                      item.dateRange,
+                      style: const TextStyle(
+                        fontFamily: AppTextStyles.fontFamily,
+                        fontSize: 14,
+                        color: AppColors.vegasGold,
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 7),
-                Text(
-                  item.dateRange,
-                  style: const TextStyle(
-                    fontFamily: AppTextStyles.fontFamily,
-                    fontSize: 14,
-                    color: AppColors.vegasGold,
-                  ),
-                ),
-                const SizedBox(height: 7),
-                Text(
-                  item.description,
-                  style: AppTextStyles.bodyText.copyWith(fontSize: 14),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      item.institution,
+                      style: AppTextStyles.bodyText.copyWith(fontSize: 14),
+                    ),
+                    Text(
+                      item.location,
+                      style: AppTextStyles.bodyText.copyWith(
+                        fontSize: 12,
+                        color: AppColors.vegasGold.withValues(alpha: 0.7),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

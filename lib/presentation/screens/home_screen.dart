@@ -6,8 +6,8 @@ import 'package:nahid_hasan_noyon/presentation/pages/about/about_page.dart';
 import 'package:nahid_hasan_noyon/presentation/pages/blog/blog_page.dart';
 import 'package:nahid_hasan_noyon/presentation/pages/contact/contact_page.dart';
 import 'package:nahid_hasan_noyon/presentation/pages/education/education_page.dart';
-import 'package:nahid_hasan_noyon/presentation/pages/experience/experience_page.dart';
-import 'package:nahid_hasan_noyon/presentation/pages/portfolio/portfolio_page.dart';
+import 'package:nahid_hasan_noyon/presentation/pages/professional_experience/professional_experience_page.dart';
+import 'package:nahid_hasan_noyon/presentation/pages/projects/projects_page.dart';
 import 'package:nahid_hasan_noyon/presentation/pages/skills/skills_page.dart';
 import 'package:nahid_hasan_noyon/presentation/widgets/navbar/navbar.dart';
 import 'package:nahid_hasan_noyon/presentation/widgets/sidebar/sidebar.dart';
@@ -23,12 +23,12 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedPageIndex = 0;
 
   final List<Widget> _pages = const [
+    ProjectsPage(),
+    ProfessionalExperiencePage(),
     AboutPage(),
+    BlogPage(),
     EducationPage(),
     SkillsPage(),
-    ExperiencePage(),
-    PortfolioPage(),
-    BlogPage(),
     ContactPage(),
   ];
 

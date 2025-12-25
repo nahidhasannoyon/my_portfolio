@@ -122,51 +122,95 @@ class PortfolioContent {
     ),
   ];
 
-  static const List<TimelineItem> education = [
-    TimelineItem(
-      title: 'Masters in Information Systems Security (MISS)',
-      dateRange: 'Jan 2024 - Present',
-      description:
-          'Weekend classes at Bangladesh University of Professionals, Mirpur-12, Dhaka, Bangladesh.',
+  static const List<EducationTimelineItem> universityEducation = [
+    EducationTimelineItem(
+      course: 'Masters in Information Systems Security (MISS)',
+      dateRange: 'Jan 2024 - Present (Weekend Program)',
+      institution: 'Bangladesh University of Professionals',
+      location: 'Mirpur-12, Dhaka, Bangladesh',
     ),
-    TimelineItem(
-      title: 'Bachelor of Science in Computer Science & Engineering (CSE)',
+    EducationTimelineItem(
+      course: 'Bachelor of Science in Computer Science & Engineering (CSE)',
       dateRange: 'April 2019 - April 2023',
-      description:
-          'Bangladesh Army International University of Science and Technology, Cumilla, Bangladesh.',
+      institution:
+          'Bangladesh Army International University of Science and Technology',
+      location: 'Cumilla, Bangladesh',
     ),
   ];
 
-  static const List<TimelineItem> experience = [
-    TimelineItem(
-      title: 'Flutter Developer at Inflack Limited',
-      dateRange: 'May 2025 – Present',
-      description:
-          'Developed and maintained 2 cross-platform apps using Flutter and GetX. Collaborated with UI/UX teams to deliver pixel-perfect, responsive interfaces. Integrated RESTful APIs, WebSockets, and Firebase services to build real-time and data-driven apps. Improved app performance by optimizing state management, reducing widget rebuilds, and implementing efficient caching strategies.',
+  static const List<EducationTimelineItem> collegeEducation = [
+    EducationTimelineItem(
+      course: 'Higher Secondary Certificate (HSC) - Science',
+      dateRange: '2016 - 2018',
+      institution: 'Uttara High School and College',
+      location: 'Uttara, Dhaka, Bangladesh',
     ),
-    TimelineItem(
-      title: 'Quality Checker (Flutter) at SuperAnnotate',
-      dateRange: 'February 2025 – April 2025',
-      description:
-          'Checked and corrected AI-generated Flutter/Dart responses for accuracy and best practices. Fixed logical and structural issues in code and UI components. Ensured clarity, correctness, and clean code standards in all reviewed outputs. Provided feedback to enhance AI response quality.',
+  ];
+
+  static const List<EducationTimelineItem> schoolEducation = [
+    EducationTimelineItem(
+      course: 'Secondary School Certificate (SSC) - Science',
+      dateRange: '2014 - 2016',
+      institution: 'Rajdhani Ideal School and College',
+      location: 'Rampura, Dhaka, Bangladesh',
     ),
-    TimelineItem(
-      title: 'Flutter Developer at Cloud Tecnico',
-      dateRange: 'October 2024 – January 2025',
-      description:
-          'Developed Leadvala, a Flutter-based lead generation app with features like call recording, lead assignment, and management.',
+  ];
+
+  static const List<ProfessionalTimelineItem> experience = [
+    ProfessionalTimelineItem(
+      role: 'Flutter Developer',
+      company: 'Inflack Limited',
+      dateRange: 'May 2025 – Present (8 Months)',
+      location: 'Baridhara, Dhaka',
+      description: [
+        'Developed and maintained 2 cross-platform apps using Flutter and GetX.',
+        'Collaborated with UI/UX teams to deliver pixel-perfect, responsive interfaces.',
+        'Integrated RESTful APIs, WebSockets, and Firebase services to build real-time and data-driven apps.',
+        'Improved app performance by optimizing state management, reducing widget rebuilds, and implementing efficient caching strategies.',
+      ],
     ),
-    TimelineItem(
-      title: 'Assistant Engineer at ePolli Technologies',
-      dateRange: 'May 2023 – September 2024',
-      description:
-          'Mentored 2 junior Flutter developers on best practices, code quality, and clean architecture. Integrated REST APIs, Firebase Authentication, Firestore, push notifications, and multi-language support across multiple apps.',
+    ProfessionalTimelineItem(
+      role: 'Quality Checker (Flutter)',
+      company: 'SuperAnnotate',
+      dateRange: 'February 2025 – April 2025 (3 Months)',
+      location: 'Contract',
+      description: [
+        'Checked and corrected AI-generated Flutter/Dart responses for accuracy and best practices.',
+        'Fixed logical and structural issues in code and UI components.',
+        'Ensured clarity, correctness, and clean code standards in all reviewed outputs.',
+        'Provided feedback to enhance AI response quality.',
+      ],
     ),
-    TimelineItem(
-      title: 'Intern at ICT Wing & Archive',
-      dateRange: 'September 2022 – April 2023',
-      description:
-          'Designed and developed the BAIUST Transport Schedule App using Flutter, featuring a digital verification system for authorized bus travel, enhancing convenience and security for Internals.',
+    ProfessionalTimelineItem(
+      role: 'Flutter Developer',
+      company: 'Cloud Tecnico',
+      dateRange: 'October 2024 – January 2025 (4 Months)',
+      location: 'Remote (India)',
+      description: [
+        'Developed Leadvala, a Flutter-based lead generation app with features like call recording, lead assignment, and management.',
+      ],
+    ),
+    ProfessionalTimelineItem(
+      role: 'Assistant Engineer',
+      company: 'ePolli Technologies',
+      dateRange: 'May 2023 – September 2024 (1 Year 5 Month)',
+      location: 'Mirpur DOHS, Dhaka',
+      description: [
+        'Mentored 2 junior Flutter developers on best practices, code quality, and clean architecture',
+        'Integrated REST APIs, Firebase Authentication, Firestore, push notifications, and multi-language support across multiple apps.',
+      ],
+    ),
+  ];
+
+  static const List<ProfessionalTimelineItem> interns = [
+    ProfessionalTimelineItem(
+      role: 'Intern',
+      company: 'ICT Wing & Archive',
+      dateRange: 'September 2022 – April 2023 (8 Months)',
+      location: 'Cumilla',
+      description: [
+        'Designed and developed the BAIUST Transport Schedule App using Flutter, featuring a digital verification system for authorized bus travel, enhancing convenience and security for Internals.',
+      ],
     ),
   ];
 
@@ -179,53 +223,73 @@ class PortfolioContent {
     ),
     TechnicalSkillCategory(
       category: 'Architecture',
-      skills: 'Clean Architecture, MVVM, MVC, Modular Architecture',
-    ),
-    TechnicalSkillCategory(
-      category: 'Database & Storage',
-      skills: 'Hive, Shared Preferences, Firebase, Flutter Secure Storage',
-    ),
-    TechnicalSkillCategory(
-      category: 'Backend/Cloud',
-      skills: 'REST API, Firebase Auth, Firestore, Cloud Messaging, Socket IO',
-    ),
-    TechnicalSkillCategory(
-      category: 'Tools',
       skills:
-          'Android Studio, VS Code, Postman, Figma, Git, Github, Trello, ClickUP',
+          'Clean Architecture/, MVVM/, MVC/, Modular Architecture/, SOLID Principles',
     ),
     TechnicalSkillCategory(
-      category: 'APIs',
+      category: 'Local Storage',
       skills:
-          'Google Maps, Payment Gateways(Bkash, Stripe), Third Party API, Google SSO',
+          'Hive (NoSQL)/, Shared Preferences/, Flutter Secure Storage/, GetStorage',
     ),
     TechnicalSkillCategory(
-      category: 'Others',
+      category: 'Cloud & Backend Services',
       skills:
-          'Push Notifications, Localization, App Optimization, Animations, Deep Linking',
+          'Firebase Ecosystem (Auth, Firestore, Realtime DB, Cloud Messaging(FCM), Crashlytics)',
+    ),
+    TechnicalSkillCategory(
+      category: 'Networking',
+      skills: 'REST APIs (Dio, Getx)/, WebSockets (Socket.IO)',
+    ),
+    TechnicalSkillCategory(
+      category: 'Performance, Security & Observability',
+      skills:
+          'App Size Reduction/, Memory Leak Detection/, Image Caching/, Lazy Loading/, Obfuscation/, Error Handling & Logging',
+    ),
+    TechnicalSkillCategory(
+      category: 'Native & Platform Integration',
+      skills:
+          'Google Maps SDK/, Payment Gateways (Bkash, Stripe)/, Google Sign-In (SSO)',
     ),
     TechnicalSkillCategory(
       category: 'Testing',
-      skills: 'Unit Testing, Widget Testing, Integration Testing',
+      skills:
+          'Unit Testing/, Widget Testing/, Integration Testing/, Mocking (Mockito, Mocktail)/, Error Handling & Logging',
+    ),
+    TechnicalSkillCategory(
+      category: 'UI / UX Engineering',
+      skills:
+          'Animations/, Reusable Component Libraries/, Responsive & Adaptive Layouts/, Multi-theme Support',
+    ),
+    TechnicalSkillCategory(
+      category: 'DevOps, CI/CD & Tooling',
+      skills:
+          'Git & GitHub/, GitHub Actions (CI/CD)/, Play Console/, Android Studio/, VS Code/, Postman/, Figma/, Flutter DevTools',
+    ),
+    TechnicalSkillCategory(
+      category: 'Project & Workflow Management',
+      skills: 'Trello/, ClickUp/, Slack',
+    ),
+    TechnicalSkillCategory(
+      category: 'Advanced Features',
+      skills:
+          'Deep Linking/, Localization & Internationalization (i18n)/, Push Notifications (FCM)',
     ),
   ];
 
   static const List<String> softSkills = [
-    'Problem Solving',
+    'Technical Leadership',
+    'Strategic Communication',
+    'Architectural Decision-Making',
+    'Problem-Solving & Debugging',
+    'Product Ownership',
+    'Collaborative Design',
+    'Time & Resource Management',
+    'Adaptability & Continuous Learning',
     'Team Collaboration',
-    'Agile Development',
+    'Attention to Detail',
+    'Critical Thinking',
     'Time Management',
     'Clean Code Mindset',
-  ];
-
-  static const List<SkillItem> skills = [
-    SkillItem(name: 'Dart', percentage: 90),
-    SkillItem(name: 'Flutter', percentage: 90),
-    SkillItem(name: 'GetX', percentage: 85),
-    SkillItem(name: 'Clean Architecture', percentage: 80),
-    SkillItem(name: 'REST API', percentage: 85),
-    SkillItem(name: 'Firebase', percentage: 80),
-    SkillItem(name: 'Testing', percentage: 70),
   ];
 
   static const List<String> projectCategories = [

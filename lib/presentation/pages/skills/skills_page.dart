@@ -141,6 +141,8 @@ class _SkillCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final skillList = skills.split('/,').map((s) => s.trim()).toList();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -155,25 +157,18 @@ class _SkillCategory extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 12),
-            Expanded(
-              child: Text(
-                category,
-                style: AppTextStyles.h5.copyWith(
-                  color: AppColors.orangeYellowCrayola,
-                ),
-              ),
-            ),
+            Expanded(child: Text(category, style: AppTextStyles.h4.copyWith())),
           ],
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 15),
         Padding(
           padding: const EdgeInsets.only(left: 16),
-          child: Text(
-            skills,
-            style: AppTextStyles.bodyText.copyWith(
-              fontSize: Responsive.getValue(context, mobile: 13, tablet: 14),
-              height: 1.6,
-            ),
+          child: Wrap(
+            spacing: 10,
+            runSpacing: 10,
+            children: skillList
+                .map((skill) => _TechnicalSkillTag(skill: skill))
+                .toList(),
           ),
         ),
       ],
@@ -228,6 +223,48 @@ class _SoftSkillTagState extends State<_SoftSkillTag> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _TechnicalSkillTag extends StatefulWidget {
+  const _TechnicalSkillTag({required this.skill});
+
+  final String skill;
+
+  @override
+  State<_TechnicalSkillTag> createState() => _TechnicalSkillTagState();
+}
+
+class _TechnicalSkillTagState extends State<_TechnicalSkillTag> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final color = _isHovered ? Colors.black : AppColors.orangeYellowCrayola;
+    final backgroundColor = _isHovered
+        ? AppColors.orangeYellowCrayola.withAlpha(200)
+        : null;
+
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          border: Border.all(color: color, width: 1.5),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Text(
+          widget.skill,
+          style: AppTextStyles.bodyText.copyWith(
+            color: color,
+            fontSize: 12,
+            fontWeight: _isHovered ? FontWeight.w700 : FontWeight.w500,
+          ),
         ),
       ),
     );
