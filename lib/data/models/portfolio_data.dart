@@ -139,3 +139,24 @@ class BlogPost {
   final String excerpt;
   final String? url;
 }
+
+class CertificationItem {
+  const CertificationItem({
+    required this.title,
+    required this.issuer,
+    required this.issuerLogo,
+    required this.category,
+    this.imageUrl,
+    this.issueDate,
+    this.credentialLink,
+    this.skills,
+  });
+  final String title;
+  final String issuer;
+  final String issuerLogo;
+  final String category;
+  final String? imageUrl;
+  final String? issueDate;
+  final ProjectLink? credentialLink;
+  final List<String>? skills;
+}

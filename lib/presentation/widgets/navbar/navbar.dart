@@ -12,6 +12,7 @@ class NavBar extends StatelessWidget {
   final Function(int) onItemSelected;
 
   static const List<String> items = [
+    'Licenses & Certifications',
     'Projects',
     'Professional Experience',
     'About',
