@@ -28,7 +28,7 @@ const RESOURCES = {"flutter.js": "24bc71911b75b5f8135c949e27a2984e",
 "assets/assets/images/tom-and-jerry-fighting-2.png": "dc1e9519fa8e5f175a9c6b6fc440ae8a",
 "assets/assets/images/tom-head.png": "2093088af882616cbb1d76c9ec4de665",
 "assets/assets/images/client-1.png": "9ab227908c62fea3c69d98182cd843bd",
-"assets/fonts/MaterialIcons-Regular.otf": "08836d1f9d98341881fa11738fae19ef",
+"assets/fonts/MaterialIcons-Regular.otf": "dcfea49ee8cf589d3a0ed1493b19fd12",
 "assets/NOTICES": "97873073183ac4b929269e4b922e3a6a",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "33b7d9392238c04c131b6ce224e13711",
 "assets/packages/flutter_map/lib/assets/flutter_map_logo.png": "208d63cc917af9713fc9572bd5c09362",
@@ -46,9 +46,9 @@ const RESOURCES = {"flutter.js": "24bc71911b75b5f8135c949e27a2984e",
 "canvaskit/skwasm.wasm": "7e5f3afdd3b0747a1fd4517cea239898",
 "canvaskit/canvaskit.js.symbols": "a3c9f77715b642d0437d9c275caba91e",
 "canvaskit/skwasm.js.symbols": "3a4aadf4e8141f284bd524976b1d6bdc",
-"flutter_bootstrap.js": "2c7df3278093ab01996e87365b990fbf",
+"flutter_bootstrap.js": "ca2757a4bac9d59e72da02198851c2f8",
 "version.json": "f28137bf46763fe8489b8e800c114ab5",
-"main.dart.js": "f62aa5a259a9180d0e8b7e2702a22223"};
+"main.dart.js": "67cfa26c55de234073b4ade73ad87e5e"};
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = ["main.dart.js",
