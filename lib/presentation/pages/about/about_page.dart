@@ -3,7 +3,7 @@ import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
 import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
 import 'package:nahid_hasan_noyon/data/models/portfolio_data.dart';
 import 'package:nahid_hasan_noyon/data/portfolio_content.dart';
-import 'package:nahid_hasan_noyon/presentation/widgets/common/common_widgets.dart';
+import 'package:nahid_hasan_noyon/core/widgets/common/common_widgets.dart';
 import 'package:styled_text/styled_text.dart';
 
 class AboutPage extends StatelessWidget {
@@ -33,7 +33,7 @@ class AboutPage extends StatelessWidget {
           // TODO: later add testimonials
           // buildTestimonials(context),
           const SizedBox(height: 30),
-          const _ClientsSection(),
+          // const _ClientsSection(),
         ],
       ),
     );

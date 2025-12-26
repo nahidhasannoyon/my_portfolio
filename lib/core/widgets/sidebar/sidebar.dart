@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
+import 'package:nahid_hasan_noyon/core/utils/enums.dart';
 import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
+import 'package:nahid_hasan_noyon/core/widgets/common/common_widgets.dart';
+import 'package:nahid_hasan_noyon/core/widgets/miscellaneous/experience_pill_widget.dart';
+import 'package:nahid_hasan_noyon/core/widgets/miscellaneous/scrolling_text_widget.dart';
 import 'package:nahid_hasan_noyon/data/models/portfolio_data.dart';
 import 'package:nahid_hasan_noyon/data/portfolio_content.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -137,10 +141,9 @@ class _SidebarState extends State<Sidebar> {
           style: AppTextStyles.h3.copyWith(
             fontSize: Responsive.getValue(
               context,
-              mobile: AppTextStyles.fs3,
-              tablet: AppTextStyles.fs3,
+              mobile: AppTextStyles.fs2,
+              tablet: AppTextStyles.fs2,
             ),
-            letterSpacing: -0.25,
           ),
           textAlign: isLargeDesktop ? TextAlign.center : TextAlign.start,
         ),
@@ -157,7 +160,7 @@ class _SidebarState extends State<Sidebar> {
           ),
         ),
         const SizedBox(height: 15),
-        const _ExperiencePill(),
+        const ExperiencePillWidget(),
       ],
     );
   }
@@ -221,9 +224,9 @@ class _SidebarState extends State<Sidebar> {
   Widget _buildSidebarMore(BuildContext context, person) {
     return Column(
       children: [
-        const _Separator(),
+        const Separator(),
         _buildContactsList(context, person),
-        const _Separator(),
+        const Separator(),
         _buildSocialList(person),
         const SizedBox(height: 20),
         _buildDownloadResumeButton(),
@@ -275,19 +278,19 @@ class _SidebarState extends State<Sidebar> {
     final isLargeDesktop = Responsive.isLargeDesktop(context);
 
     final contacts = [
-      _ContactData(
+      ContactData(
         icon: Icons.email_outlined,
         title: 'Email',
         value: person.email,
         action: ContactAction.copyEmail,
       ),
-      _ContactData(
+      ContactData(
         icon: Icons.phone_android_outlined,
         title: 'Phone',
         value: person.phone,
         action: ContactAction.dialPhone,
       ),
-      _ContactData(
+      ContactData(
         icon: Icons.location_on_outlined,
         title: 'Location',
         value: person.location,
@@ -326,7 +329,7 @@ class _SidebarState extends State<Sidebar> {
     );
   }
 
-  Widget _buildContactItem(_ContactData contact) {
+  Widget _buildContactItem(ContactData contact) {
     return Row(
       children: [
         Container(
@@ -369,7 +372,7 @@ class _SidebarState extends State<Sidebar> {
     );
   }
 
-  Widget _buildValueWidget(_ContactData contact) {
+  Widget _buildValueWidget(ContactData contact) {
     final text = contact.value;
     final isLong = text.length > 20;
 
@@ -384,7 +387,7 @@ class _SidebarState extends State<Sidebar> {
     );
 
     if (isLong) {
-      textWidget = _ScrollingText(text: text);
+      textWidget = ScrollingTextWidget(text: text);
     }
 
     Widget interactiveWidget = textWidget;
@@ -469,192 +472,6 @@ class _SidebarState extends State<Sidebar> {
           ),
         );
       }).toList(),
-    );
-  }
-}
-
-class _Separator extends StatelessWidget {
-  const _Separator();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 1,
-      margin: EdgeInsets.symmetric(
-        vertical: Responsive.getValue(context, mobile: 16, tablet: 24),
-      ),
-      color: AppColors.jet,
-    );
-  }
-}
-
-class _ContactData {
-  _ContactData({
-    required this.icon,
-    required this.title,
-    required this.value,
-    required this.action,
-  });
-  final IconData icon;
-  final String title;
-  final String value;
-  final ContactAction action;
-}
-
-enum ContactAction { none, copyEmail, dialPhone, openLocation }
-
-class _ScrollingText extends StatefulWidget {
-  const _ScrollingText({required this.text});
-  final String text;
-
-  @override
-  State<_ScrollingText> createState() => _ScrollingTextState();
-}
-
-class _ScrollingTextState extends State<_ScrollingText> {
-  late final ScrollController _scrollController;
-  bool _scrolling = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _scrollController = ScrollController();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _startScrollIfNeeded());
-  }
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
-  Future<void> _startScrollIfNeeded() async {
-    await Future.delayed(const Duration(milliseconds: 200));
-    if (!mounted) return;
-
-    try {
-      final maxScroll = _scrollController.position.maxScrollExtent;
-      if (maxScroll <= 0) return;
-    } catch (_) {}
-
-    if (_scrolling) return;
-    _scrolling = true;
-
-    while (mounted) {
-      try {
-        final max = _scrollController.position.maxScrollExtent;
-        if (max <= 0) break;
-        await _scrollController.animateTo(
-          max,
-          duration: Duration(seconds: (max / 30).clamp(3, 12).toInt()),
-          curve: Curves.linear,
-        );
-        await Future.delayed(const Duration(milliseconds: 600));
-        if (!mounted) break;
-        _scrollController.jumpTo(0);
-        await Future.delayed(const Duration(milliseconds: 400));
-      } catch (_) {
-        await Future.delayed(const Duration(milliseconds: 300));
-      }
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (widget.text.length <= 20) {
-      return Text(
-        widget.text,
-        style: const TextStyle(
-          fontFamily: AppTextStyles.fontFamily,
-          fontSize: 13,
-          color: AppColors.white2,
-        ),
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-      );
-    }
-
-    final repeated = '${widget.text}    ';
-
-    return SizedBox(
-      height: 18,
-      child: SingleChildScrollView(
-        controller: _scrollController,
-        scrollDirection: Axis.horizontal,
-        physics: const NeverScrollableScrollPhysics(),
-        child: Row(
-          children: [
-            Text(
-              repeated,
-              style: const TextStyle(
-                fontFamily: AppTextStyles.fontFamily,
-                fontSize: 14,
-                color: AppColors.white2,
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.visible,
-            ),
-            Text(
-              repeated,
-              style: const TextStyle(
-                fontFamily: AppTextStyles.fontFamily,
-                fontSize: 14,
-                color: AppColors.white2,
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.visible,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _ExperiencePill extends StatelessWidget {
-  const _ExperiencePill();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [AppColors.onyx, AppColors.eerieBlack1],
-        ),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: AppColors.orangeYellowCrayola.withValues(alpha: 0.3),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.orangeYellowCrayola.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: const Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            Icons.workspace_premium_rounded,
-            color: AppColors.orangeYellowCrayola,
-            size: 16,
-          ),
-          SizedBox(width: 8),
-          Text(
-            '3+ Years Exp.',
-            style: TextStyle(
-              fontFamily: AppTextStyles.fontFamily,
-              fontSize: 12,
-              color: AppColors.white2,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

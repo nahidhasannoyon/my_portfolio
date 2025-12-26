@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:nahid_hasan_noyon/core/utils/enums.dart';
+
 class LanguageItem {
   const LanguageItem({required this.name, required this.proficiency});
   final String name;
@@ -130,6 +133,7 @@ class ProjectItem {
   final List<String>? keywords;
   final List<ProjectLink>? links;
 }
+
 class CertificationItem {
   const CertificationItem({
     required this.title,
@@ -149,4 +153,17 @@ class CertificationItem {
   final String? issueDate;
   final ProjectLink? credentialLink;
   final List<String>? skills;
+}
+
+class ContactData {
+  ContactData({
+    required this.icon,
+    required this.title,
+    required this.value,
+    required this.action,
+  });
+  final IconData icon;
+  final String title;
+  final String value;
+  final ContactAction action;
 }

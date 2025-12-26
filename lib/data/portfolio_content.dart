@@ -11,12 +11,12 @@ class PortfolioContent {
     socialLinks: [
       SocialLink(
         name: 'GitHub',
-        url: 'https://github.com/NahidHasanNoyon',
+        url: 'https://github.com/nahidhasannoyon',
         icon: 'assets/icons/github.svg',
       ),
       SocialLink(
         name: 'LinkedIn',
-        url: 'https://linkedin.com/in/NahidHasanNoyon',
+        url: 'https://linkedin.com/in/nahidhasannoyon',
         icon: 'assets/icons/linkedIn.svg',
       ),
       SocialLink(
@@ -28,7 +28,7 @@ class PortfolioContent {
     languages: [
       LanguageItem(
         name: 'Bengali',
-        proficiency: 'Native or bilingual proficiency',
+        proficiency: 'Native/bilingual proficiency',
       ),
       LanguageItem(
         name: 'English',
@@ -47,7 +47,7 @@ class PortfolioContent {
       title: 'Flutter App Development',
       description:
           'Building high-performance, cross-platform mobile applications for Android, iOS, and web.',
-      iconPath: 'assets/images/icon-app.svg',
+      iconPath: 'assets/icons/pub-dev-logo.svg',
     ),
     ServiceItem(
       title: 'REST API Integration',

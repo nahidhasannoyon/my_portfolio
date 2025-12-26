@@ -3,7 +3,7 @@ import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
 import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
 import 'package:nahid_hasan_noyon/data/models/portfolio_data.dart';
 import 'package:nahid_hasan_noyon/data/portfolio_content.dart';
-import 'package:nahid_hasan_noyon/presentation/widgets/common/common_widgets.dart';
+import 'package:nahid_hasan_noyon/core/widgets/common/common_widgets.dart';
 
 class EducationPage extends StatelessWidget {
   const EducationPage({super.key});

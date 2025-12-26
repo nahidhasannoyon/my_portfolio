@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
 import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
 import 'package:nahid_hasan_noyon/data/portfolio_content.dart';
-import 'package:nahid_hasan_noyon/presentation/widgets/common/common_widgets.dart';
+import 'package:nahid_hasan_noyon/core/widgets/common/common_widgets.dart';
 
 class SkillsPage extends StatelessWidget {
   const SkillsPage({super.key});

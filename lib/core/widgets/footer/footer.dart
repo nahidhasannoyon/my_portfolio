@@ -28,7 +28,7 @@ class Footer extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           const Text(
-            'Developed with ❤️ by Nahid Hasan Noyon',
+            'Developed with Dart by Nahid Hasan Noyon',
             style: TextStyle(
               color: AppColors.lightGray,
               fontSize: 12,

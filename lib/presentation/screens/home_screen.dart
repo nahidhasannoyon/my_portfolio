@@ -9,9 +9,9 @@ import 'package:nahid_hasan_noyon/presentation/pages/experience/experience_page.
 import 'package:nahid_hasan_noyon/presentation/pages/licenses_certifications/licenses_certifications_page.dart';
 import 'package:nahid_hasan_noyon/presentation/pages/projects/projects_page.dart';
 import 'package:nahid_hasan_noyon/presentation/pages/skills/skills_page.dart';
-import 'package:nahid_hasan_noyon/presentation/widgets/footer/footer.dart';
-import 'package:nahid_hasan_noyon/presentation/widgets/navbar/navbar.dart';
-import 'package:nahid_hasan_noyon/presentation/widgets/sidebar/sidebar.dart';
+import 'package:nahid_hasan_noyon/core/widgets/footer/footer.dart';
+import 'package:nahid_hasan_noyon/core/widgets/navbar/navbar.dart';
+import 'package:nahid_hasan_noyon/core/widgets/sidebar/sidebar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ? _buildLargeDesktopLayout()
             : _buildMobileTabletLayout(isDesktopOrLarger),
       ),
-      bottomNavigationBar: isDesktopOrLarger ? null : _buildBottomNavBar(),
+      bottomNavigationBar: isDesktopOrLarger ? null : _buildNavBar(),
     );
   }
 
@@ -63,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     MouseRegion(
                       onEnter: (_) => disableCursor(),
                       onExit: (_) => enableCursor(),
-                      child: _buildDesktopNavBar(),
+                      child: _buildNavBar(),
                     ),
                     const SizedBox(height: 15),
                     Expanded(
@@ -139,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Stack(
                           children: [
                             _buildMainContent(),
-                            if (isDesktopOrLarger) _buildDesktopNavBar(),
+                            if (isDesktopOrLarger) _buildNavBar(),
                           ],
                         ),
                       ),
@@ -196,16 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildDesktopNavBar() {
-    return NavBar(
-      selectedIndex: _selectedPageIndex,
-      onItemSelected: (index) {
-        setState(() => _selectedPageIndex = index);
-      },
-    );
-  }
-
-  Widget? _buildBottomNavBar() {
+  Widget _buildNavBar() {
     return NavBar(
       selectedIndex: _selectedPageIndex,
       onItemSelected: (index) {

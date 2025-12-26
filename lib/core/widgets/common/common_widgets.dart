@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
+import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
 
 class GradientBox extends StatelessWidget {
   const GradientBox({
@@ -66,20 +67,6 @@ class IconBox extends StatelessWidget {
   }
 }
 
-class Separator extends StatelessWidget {
-  const Separator({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 1,
-      margin: const EdgeInsets.symmetric(vertical: 16),
-      color: AppColors.jet,
-    );
-  }
-}
-
 class ArticleTitle extends StatelessWidget {
   const ArticleTitle({super.key, required this.title});
   final String title;
@@ -104,78 +91,18 @@ class ArticleTitle extends StatelessWidget {
   }
 }
 
-class GradientButton extends StatefulWidget {
-  const GradientButton({
-    super.key,
-    this.onPressed,
-    required this.child,
-    this.borderRadius = 14,
-    this.padding = const EdgeInsets.symmetric(horizontal: 20, vertical: 13),
-  });
-  final VoidCallback? onPressed;
-  final Widget child;
-  final double borderRadius;
-  final EdgeInsetsGeometry padding;
-
-  @override
-  State<GradientButton> createState() => _GradientButtonState();
-}
-
-class _GradientButtonState extends State<GradientButton> {
-  bool _isHovered = false;
+class Separator extends StatelessWidget {
+  const Separator({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
-      child: GestureDetector(
-        onTap: widget.onPressed,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 250),
-          decoration: BoxDecoration(
-            gradient: _isHovered
-                ? AppColors.bgGradientYellow1
-                : AppColors.borderGradientOnyx,
-            borderRadius: BorderRadius.circular(widget.borderRadius),
-            boxShadow: const [AppShadows.shadow3],
-          ),
-          child: Container(
-            margin: const EdgeInsets.all(1),
-            padding: widget.padding,
-            decoration: BoxDecoration(
-              gradient: _isHovered
-                  ? AppColors.bgGradientYellow2
-                  : AppColors.bgGradientJet,
-              borderRadius: BorderRadius.circular(widget.borderRadius - 1),
-            ),
-            child: widget.child,
-          ),
-        ),
+    return Container(
+      width: double.infinity,
+      height: 1,
+      margin: EdgeInsets.symmetric(
+        vertical: Responsive.getValue(context, mobile: 16, tablet: 24),
       ),
-    );
-  }
-}
-
-class GradientText extends StatelessWidget {
-  const GradientText({
-    super.key,
-    required this.text,
-    required this.style,
-    this.gradient = AppColors.textGradientYellow,
-  });
-  final String text;
-  final TextStyle style;
-  final Gradient gradient;
-
-  @override
-  Widget build(BuildContext context) {
-    return ShaderMask(
-      blendMode: BlendMode.srcIn,
-      shaderCallback: (bounds) => gradient.createShader(
-        Rect.fromLTWH(0, 0, bounds.width, bounds.height),
-      ),
-      child: Text(text, style: style),
+      color: AppColors.jet,
     );
   }
 }

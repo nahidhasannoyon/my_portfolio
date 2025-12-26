@@ -7,7 +7,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
 import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
-import 'package:nahid_hasan_noyon/presentation/widgets/common/common_widgets.dart';
+import 'package:nahid_hasan_noyon/core/widgets/common/common_widgets.dart';
 
 class ContactPage extends StatefulWidget {
   const ContactPage({super.key});

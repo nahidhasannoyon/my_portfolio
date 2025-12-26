@@ -5,7 +5,7 @@ import 'package:nahid_hasan_noyon/core/utils/cursor_service.dart';
 import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
 import 'package:nahid_hasan_noyon/data/models/portfolio_data.dart';
 import 'package:nahid_hasan_noyon/data/portfolio_content.dart';
-import 'package:nahid_hasan_noyon/presentation/widgets/common/common_widgets.dart';
+import 'package:nahid_hasan_noyon/core/widgets/common/common_widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LicensesCertificationsPage extends StatefulWidget {
