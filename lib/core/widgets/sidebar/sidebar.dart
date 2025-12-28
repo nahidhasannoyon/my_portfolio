@@ -368,7 +368,6 @@ class _SidebarState extends State<Sidebar> {
     Widget textWidget = Text(
       text,
       style: const TextStyle(
-        fontFamily: AppTextStyles.fontFamily,
         fontSize: 14,
         color: AppColors.white2,
       ),

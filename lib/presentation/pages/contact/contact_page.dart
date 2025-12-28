@@ -124,7 +124,7 @@ class _ContactPageState extends State<ContactPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Contact Form', style: AppTextStyles.h3),
+           Text('Contact Form', style: AppTextStyles.h3),
           const SizedBox(height: 20),
           if (isDesktop)
             Row(
@@ -270,14 +270,12 @@ class _FormInputState extends State<_FormInput> {
       maxLines: widget.maxLines,
       keyboardType: widget.keyboardType,
       style: const TextStyle(
-        fontFamily: AppTextStyles.fontFamily,
         fontSize: 14,
         color: AppColors.white2,
       ),
       decoration: InputDecoration(
         hintText: widget.hintText,
         hintStyle: const TextStyle(
-          fontFamily: AppTextStyles.fontFamily,
           fontSize: 14,
           fontWeight: FontWeight.w500,
           color: AppColors.lightGray70,
@@ -364,7 +362,6 @@ class _SubmitButtonState extends State<_SubmitButton> {
                 Text(
                   'Send Message',
                   style: TextStyle(
-                    fontFamily: AppTextStyles.fontFamily,
                     fontSize: Responsive.getValue(
                       context,
                       mobile: 14,

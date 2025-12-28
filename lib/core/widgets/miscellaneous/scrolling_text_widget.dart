@@ -63,7 +63,6 @@ class ScrollingTextWidgetState extends State<ScrollingTextWidget> {
       return Text(
         widget.text,
         style: const TextStyle(
-          fontFamily: AppTextStyles.fontFamily,
           fontSize: 13,
           color: AppColors.white2,
         ),
@@ -85,7 +84,6 @@ class ScrollingTextWidgetState extends State<ScrollingTextWidget> {
             Text(
               repeated,
               style: const TextStyle(
-                fontFamily: AppTextStyles.fontFamily,
                 fontSize: 14,
                 color: AppColors.white2,
               ),
@@ -95,7 +93,6 @@ class ScrollingTextWidgetState extends State<ScrollingTextWidget> {
             Text(
               repeated,
               style: const TextStyle(
-                fontFamily: AppTextStyles.fontFamily,
                 fontSize: 14,
                 color: AppColors.white2,
               ),

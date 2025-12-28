@@ -201,7 +201,6 @@ class _FilterButtonState extends State<_FilterButton> {
         child: Text(
           widget.title,
           style: TextStyle(
-            fontFamily: AppTextStyles.fontFamily,
             fontSize: 15,
             color: widget.isSelected
                 ? AppColors.orangeYellowCrayola

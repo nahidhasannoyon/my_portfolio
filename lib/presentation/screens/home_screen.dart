@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
 import 'package:nahid_hasan_noyon/core/utils/cursor_service.dart';
 import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
+import 'package:nahid_hasan_noyon/core/widgets/footer/footer.dart';
+import 'package:nahid_hasan_noyon/core/widgets/navbar/navbar.dart';
+import 'package:nahid_hasan_noyon/core/widgets/sidebar/sidebar.dart';
 import 'package:nahid_hasan_noyon/presentation/pages/about/about_page.dart';
 import 'package:nahid_hasan_noyon/presentation/pages/contact/contact_page.dart';
 import 'package:nahid_hasan_noyon/presentation/pages/education/education_page.dart';
@@ -9,9 +12,6 @@ import 'package:nahid_hasan_noyon/presentation/pages/experience/experience_page.
 import 'package:nahid_hasan_noyon/presentation/pages/licenses_certifications/licenses_certifications_page.dart';
 import 'package:nahid_hasan_noyon/presentation/pages/projects/projects_page.dart';
 import 'package:nahid_hasan_noyon/presentation/pages/skills/skills_page.dart';
-import 'package:nahid_hasan_noyon/core/widgets/footer/footer.dart';
-import 'package:nahid_hasan_noyon/core/widgets/navbar/navbar.dart';
-import 'package:nahid_hasan_noyon/core/widgets/sidebar/sidebar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

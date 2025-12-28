@@ -36,7 +36,7 @@ class ExperiencePillWidget extends StatelessWidget {
           Text(
             '3+ Years Exp.',
             style: TextStyle(
-              fontFamily: AppTextStyles.fontFamily,
+              // fontFamily: AppTextStyles.fontFamily,
               fontSize: 12,
               color: AppColors.white2,
               fontWeight: FontWeight.w500,

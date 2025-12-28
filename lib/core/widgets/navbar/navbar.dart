@@ -129,7 +129,6 @@ class _NavItemState extends State<_NavItem> {
           child: AnimatedDefaultTextStyle(
             duration: const Duration(milliseconds: 250),
             style: TextStyle(
-              fontFamily: AppTextStyles.fontFamily,
               fontSize: Responsive.getValue(
                 context,
                 mobile: 11,

@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
 
 class Footer extends StatefulWidget {
@@ -129,7 +130,7 @@ class _FooterState extends State<Footer> with TickerProviderStateMixin {
         ),
 
         // Name with gradient animation
-        _buildAnimatedName(),
+        Column(children: [const SizedBox(height: 8), _buildAnimatedName()]),
       ],
     );
   }
@@ -223,9 +224,10 @@ class _FooterState extends State<Footer> with TickerProviderStateMixin {
               end: Alignment(-1 + _shimmerController.value * 4, 0),
             ).createShader(bounds);
           },
-          child: const Text(
+          child: Text(
             'Nahid Hasan Noyon',
             style: TextStyle(
+              fontFamily: GoogleFonts.borel().fontFamily,
               color: Colors.white,
               fontSize: 15,
               fontWeight: FontWeight.w600,
