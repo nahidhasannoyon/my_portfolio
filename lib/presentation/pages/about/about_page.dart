@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
 import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
 import 'package:nahid_hasan_noyon/core/widgets/common/common_widgets.dart';
@@ -77,9 +78,9 @@ class AboutPage extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 crossAxisCount: 2,
-                childAspectRatio: 2.5,
-                crossAxisSpacing: 25,
-                mainAxisSpacing: 20,
+                childAspectRatio: 2.3,
+                crossAxisSpacing: 25.w,
+                mainAxisSpacing: 20.h,
                 children: PortfolioContent.services
                     .map((s) => _ServiceCard(service: s))
                     .toList(),
@@ -226,7 +227,6 @@ class _ClientsSectionState extends State<_ClientsSection> {
               mobile: 120,
               tablet: 150,
               desktop: 180,
-              largeDesktop: 200,
             ),
             margin: const EdgeInsets.only(right: 15),
             child: _ClientLogo(client: PortfolioContent.clients[index]),
@@ -246,13 +246,13 @@ class _ServiceCard extends StatelessWidget {
     final isTabletOrLarger = Responsive.isTabletOrLarger(context);
 
     return GradientBox(
-      padding: EdgeInsets.all(isTabletOrLarger ? 30 : 20),
+      padding: EdgeInsets.all(isTabletOrLarger ? 20.r : 10.r),
       child: isTabletOrLarger
           ? Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildIcon(),
-                const SizedBox(width: 18),
+                SizedBox(width: 18.w),
                 Expanded(child: _buildContent(isTabletOrLarger)),
               ],
             )
@@ -269,16 +269,16 @@ class _ServiceCard extends StatelessWidget {
   Widget _buildIcon() {
     return SmartImageWidget(
       source: service.iconPath,
-      width: 40,
-      height: 40,
-      padding: const EdgeInsets.all(8),
-      borderRadius: BorderRadius.circular(8),
+      width: 40.w,
+      height: 40.w,
+      padding: EdgeInsets.all(8.w),
+      borderRadius: BorderRadius.circular(8.r),
       backgroundColor: AppColors.orangeYellowCrayola.withValues(alpha: .1),
 
-      errorWidget: const Icon(
+      errorWidget: Icon(
         Icons.design_services,
         color: AppColors.orangeYellowCrayola,
-        size: 24,
+        size: 24.w,
       ),
     );
   }
@@ -294,11 +294,11 @@ class _ServiceCard extends StatelessWidget {
           service.title,
           style: AppTextStyles.h4,
           textAlign: isTabletOrLarger ? TextAlign.start : TextAlign.center,
+          overflow: TextOverflow.ellipsis,
         ),
-        const SizedBox(height: 7),
         Text(
           service.description,
-          style: AppTextStyles.bodyText,
+          style: AppTextStyles.bodyText.copyWith(height: 1.4),
           textAlign: TextAlign.justify,
           overflow: TextOverflow.ellipsis,
           maxLines: 3,

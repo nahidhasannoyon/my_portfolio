@@ -100,7 +100,7 @@ class _SidebarState extends State<Sidebar> {
       context,
       mobile: 80.0,
       tablet: 120.0,
-      largeDesktop: 150.0,
+      desktop: 150.0,
     );
 
     return SmartImageWidget(

@@ -32,7 +32,6 @@ class Responsive {
     required double mobile,
     double? tablet,
     double? desktop,
-    double? largeDesktop,
   }) {
     switch (getDeviceType(context)) {
       case DeviceType.desktop:
@@ -49,7 +48,6 @@ class Responsive {
     required T mobile,
     T? tablet,
     T? desktop,
-    T? largeDesktop,
   }) {
     switch (getDeviceType(context)) {
       case DeviceType.desktop:

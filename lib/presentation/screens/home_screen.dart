@@ -41,14 +41,14 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppColors.smokyBlack,
       body: SafeArea(
         child: isDesktop
-            ? _buildLargeDesktopLayout()
+            ? _buildDesktopLayout()
             : _buildMobileTabletLayout(isDesktop),
       ),
       bottomNavigationBar: isDesktop ? null : _buildNavBar(),
     );
   }
 
-  Widget _buildLargeDesktopLayout() {
+  Widget _buildDesktopLayout() {
     return Column(
       children: [
         Expanded(
@@ -98,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildMobileTabletLayout(bool isDesktopOrLarger) {
+  Widget _buildMobileTabletLayout(bool isDesktop) {
     return Column(
       children: [
         Expanded(
@@ -138,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Stack(
                           children: [
                             _buildMainContent(),
-                            if (isDesktopOrLarger) _buildNavBar(),
+                            if (isDesktop) _buildNavBar(),
                           ],
                         ),
                       ),
