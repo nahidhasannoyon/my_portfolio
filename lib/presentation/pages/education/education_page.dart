@@ -120,7 +120,7 @@ class _EducationItemWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      width: isTablet ? 300 : null,
+                      width: isTablet || !isDesktop ? 300 : null,
                       child: Text(
                         item.course,
                         style: AppTextStyles.h4.copyWith(
@@ -139,7 +139,7 @@ class _EducationItemWidget extends StatelessWidget {
                       ),
                   ],
                 ),
-                if (isTablet) ...[
+                if (isTablet || !isDesktop) ...[
                   const SizedBox(height: 5),
                   Text(
                     item.dateRange,
@@ -154,7 +154,7 @@ class _EducationItemWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      width: isTablet ? 300 : null,
+                      width: isTablet || !isDesktop ? 300 : null,
                       child: Text(
                         item.institution,
                         style: AppTextStyles.bodyText.copyWith(fontSize: 14),
@@ -172,7 +172,7 @@ class _EducationItemWidget extends StatelessWidget {
                       ),
                   ],
                 ),
-                if (isTablet) ...[
+                if (isTablet || !isDesktop) ...[
                   const SizedBox(height: 5),
                   Text(
                     item.location,

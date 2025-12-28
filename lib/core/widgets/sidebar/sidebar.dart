@@ -24,13 +24,20 @@ class _SidebarState extends State<Sidebar> {
   @override
   Widget build(BuildContext context) {
     final isDesktop = Responsive.isDesktop(context);
+    final isTablet = Responsive.isTablet(context);
     const PersonInfo person = PortfolioContent.person;
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
       constraints: BoxConstraints(
-        maxHeight: isDesktop ? double.infinity : (_isExpanded ? 650 : 180),
+        maxHeight: isDesktop
+            ? double.infinity
+            : (_isExpanded
+                  ? 650
+                  : isTablet
+                  ? 180
+                  : 150),
       ),
       decoration: BoxDecoration(
         color: AppColors.eerieBlack2,
@@ -308,7 +315,7 @@ class _SidebarState extends State<Sidebar> {
       crossAxisCount: Responsive.isDesktop(context) ? 2 : 1,
       childAspectRatio: Responsive.getValue(
         context,
-        mobile: 5,
+        mobile: 10,
         tablet: 10,
         desktop: 4,
       ),

@@ -246,7 +246,9 @@ class _ServiceCard extends StatelessWidget {
     final isTabletOrLarger = Responsive.isTabletOrLarger(context);
 
     return GradientBox(
-      padding: EdgeInsets.all(isTabletOrLarger ? 20.r : 10.r),
+      padding: EdgeInsets.all(
+        isTabletOrLarger ? 20.r.clamp(15, 25) : 10.r.clamp(8, 15),
+      ),
       child: isTabletOrLarger
           ? Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -299,7 +301,7 @@ class _ServiceCard extends StatelessWidget {
         Text(
           service.description,
           style: AppTextStyles.bodyText.copyWith(height: 1.4),
-          textAlign: TextAlign.justify,
+          textAlign: isTabletOrLarger ? TextAlign.justify : TextAlign.center,
           overflow: TextOverflow.ellipsis,
           maxLines: 3,
         ),

@@ -59,11 +59,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.only(bottom: 30, left: 15, right: 15),
                 child: Column(
                   children: [
-                    MouseRegion(
-                      onEnter: (_) => disableCursor(),
-                      onExit: (_) => enableCursor(),
-                      child: _buildNavBar(),
-                    ),
+                    _buildNavBar(),
+
                     const SizedBox(height: 15),
                     Expanded(
                       child: Row(
@@ -104,9 +101,10 @@ class _HomeScreenState extends State<HomeScreen> {
         Expanded(
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 12,
-                vertical: Responsive.getValue(context, mobile: 15, tablet: 60),
+              padding: EdgeInsets.only(
+                left: 12,
+                right: 12,
+                top: Responsive.getValue(context, mobile: 15, tablet: 60),
               ),
               child: Center(
                 child: ConstrainedBox(
@@ -142,6 +140,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ),
+                      SizedBox(
+                        height: Responsive.getValue(
+                          context,
+                          mobile: 30,
+                          tablet: 60,
+                        ),
+                      ),
+                      const Footer(),
                     ],
                   ),
                 ),
@@ -149,7 +155,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
-        const Footer(),
       ],
     );
   }

@@ -135,7 +135,7 @@ class _TimelineItemWidget extends StatelessWidget {
                         ),
                     ],
                   ),
-                  if (isTablet) ...[
+                  if (isTablet || !isDesktop) ...[
                     const SizedBox(height: 5),
                     Text(
                       item.dateRange,
