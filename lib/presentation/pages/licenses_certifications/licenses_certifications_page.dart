@@ -162,7 +162,7 @@ class _LicensesCertificationsPageState
         crossAxisCount: crossAxisCount,
         crossAxisSpacing: 15.w.clamp(13, 17),
         mainAxisSpacing: 15.w.clamp(13, 17),
-        childAspectRatio: crossAxisCount == 1 ? 1.1 : .45,
+        childAspectRatio: crossAxisCount == 1 ? .8 : .45,
       ),
       itemCount: _filteredCertifications.length,
       itemBuilder: (context, index) {

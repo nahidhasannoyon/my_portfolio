@@ -62,7 +62,8 @@ class SmartImageWidget extends StatelessWidget {
   final Widget? errorWidget;
 
   /// Root default image path - the ultimate fallback
-  static const String rootDefaultImage = 'assets/icons/default_image.png';
+  static const String rootDefaultImage =
+      'assets/images/gifs/flutter-logo-loading.gif';
 
   /// Checks if the source is an IconData
   bool get _isIcon => source is IconData;
@@ -147,6 +148,8 @@ class SmartImageWidget extends StatelessWidget {
             width: width,
             height: height,
             fit: fit,
+            renderCache: RenderCache.drawingCommands,
+            frameRate: const FrameRate(30),
             errorBuilder: (context, error, stackTrace) =>
                 _buildErrorWidget(context),
           )
@@ -155,6 +158,8 @@ class SmartImageWidget extends StatelessWidget {
             width: width,
             height: height,
             fit: fit,
+            renderCache: RenderCache.drawingCommands,
+            frameRate: const FrameRate(30),
             errorBuilder: (context, error, stackTrace) =>
                 _buildErrorWidget(context),
           );
