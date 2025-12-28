@@ -160,9 +160,9 @@ class _LicensesCertificationsPageState
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,
-        crossAxisSpacing: 20.w,
-        mainAxisSpacing: 20.w,
-        childAspectRatio: crossAxisCount == 1 ? 0.85 : .5.w,
+        crossAxisSpacing: 15.w.clamp(13, 17),
+        mainAxisSpacing: 15.w.clamp(13, 17),
+        childAspectRatio: crossAxisCount == 1 ? 0.85 : .45,
       ),
       itemCount: _filteredCertifications.length,
       itemBuilder: (context, index) {
@@ -357,9 +357,9 @@ class _CertificationCard extends StatelessWidget {
                     children: [
                       SmartImageWidget(
                         source: certification.issuerLogo,
-                        width: 40.w,
+                        width: 40.w.clamp(36, 44),
                         borderRadius: BorderRadius.circular(8),
-                        height: 40.w,
+                        height: 40.w.clamp(36, 44),
                         backgroundColor: AppColors.jet,
                         padding: const EdgeInsets.all(6),
                         errorWidget: Center(
@@ -371,7 +371,7 @@ class _CertificationCard extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(width: 12.w),
+                      SizedBox(width: 12.w.clamp(10, 14)),
                       Expanded(
                         child: Text(
                           certification.issuer,
@@ -383,18 +383,20 @@ class _CertificationCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10.w),
+                  SizedBox(height: 10.w.clamp(8, 12)),
                   // Title
                   Text(
                     certification.title,
                     style: AppTextStyles.h4.copyWith(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
+                      height: 1.3,
                     ),
                     maxLines: 3,
+
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(height: 10.w),
+                  SizedBox(height: 10.w.clamp(8, 12)),
                   // Issue Date
                   if (certification.issueDate != null) ...[
                     Row(
@@ -421,15 +423,15 @@ class _CertificationCard extends StatelessWidget {
                   if (certification.skills != null &&
                       certification.skills!.isNotEmpty) ...[
                     Wrap(
-                      spacing: 6.w,
-                      runSpacing: 4.w,
+                      spacing: 6.w.clamp(4, 8),
+                      runSpacing: 4.w.clamp(3, 5),
                       children: certification.skills!
                           .take(3)
                           .map(
                             (skill) => Container(
                               padding: EdgeInsets.symmetric(
-                                horizontal: 8.w,
-                                vertical: 4.w,
+                                horizontal: 8.w.clamp(6, 10),
+                                vertical: 4.w.clamp(3, 5),
                               ),
                               decoration: BoxDecoration(
                                 color: AppColors.jet,
@@ -449,7 +451,7 @@ class _CertificationCard extends StatelessWidget {
                   ],
                   // Credential Link if available
                   if (certification.credentialLink != null) ...[
-                    SizedBox(height: 12.w),
+                    SizedBox(height: 10.w.clamp(8, 12)),
                     MouseRegion(
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
@@ -466,8 +468,8 @@ class _CertificationCard extends StatelessWidget {
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(
-                            horizontal: 12.w,
-                            vertical: 8.w,
+                            horizontal: 12.w.clamp(10, 14),
+                            vertical: 8.w.clamp(6, 10),
                           ),
                           decoration: BoxDecoration(
                             border: Border.all(

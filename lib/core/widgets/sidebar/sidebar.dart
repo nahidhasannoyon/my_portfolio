@@ -30,7 +30,7 @@ class _SidebarState extends State<Sidebar> {
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
       constraints: BoxConstraints(
-        maxHeight: isDesktop ? double.infinity : (_isExpanded ? 600 : 112),
+        maxHeight: isDesktop ? double.infinity : (_isExpanded ? 600 : 180),
       ),
       decoration: BoxDecoration(
         color: AppColors.eerieBlack2,

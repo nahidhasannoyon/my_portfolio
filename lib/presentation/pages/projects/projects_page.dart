@@ -158,9 +158,9 @@ class _ProjectsPageState extends State<ProjectsPage> {
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,
-        crossAxisSpacing: 15.w,
-        mainAxisSpacing: 15.h,
-        childAspectRatio: crossAxisCount == 1 ? 1.8 : .8.w,
+        crossAxisSpacing: 15.w.clamp(13, 17),
+        mainAxisSpacing: 15.w.clamp(13, 17),
+        childAspectRatio: crossAxisCount == 1 ? 1.8 : .8,
       ),
       itemCount: _filteredProjects.length,
       itemBuilder: (context, index) {
@@ -346,7 +346,7 @@ class _ProjectCardState extends State<_ProjectCard> {
                 ),
               ],
               if (widget.project.description != null) ...[
-                const SizedBox(height: 12),
+                const SizedBox(height: 8),
                 Text(
                   widget.project.description!,
                   maxLines: 3,
@@ -369,8 +369,8 @@ class _ProjectCardState extends State<_ProjectCard> {
                       .map(
                         (keyword) => Container(
                           padding: EdgeInsets.symmetric(
-                            horizontal: 10.w,
-                            vertical: 5.w,
+                            horizontal: 10.w.clamp(8, 12),
+                            vertical: 5.w.clamp(4, 6),
                           ),
                           decoration: BoxDecoration(
                             color: AppColors.jet,
@@ -398,8 +398,8 @@ class _ProjectCardState extends State<_ProjectCard> {
                   widget.project.links!.isNotEmpty) ...[
                 const SizedBox(height: 12),
                 Wrap(
-                  spacing: 5.w,
-                  runSpacing: 5.w,
+                  spacing: 5.w.clamp(4, 6),
+                  runSpacing: 5.w.clamp(4, 6),
                   children: widget.project.links!
                       .map(
                         (link) => MouseRegion(
@@ -414,8 +414,8 @@ class _ProjectCardState extends State<_ProjectCard> {
                             },
                             child: Container(
                               padding: EdgeInsets.symmetric(
-                                horizontal: 10.w,
-                                vertical: 6.w,
+                                horizontal: 10.w.clamp(8, 12),
+                                vertical: 6.w.clamp(5, 7),
                               ),
                               decoration: BoxDecoration(
                                 border: Border.all(
@@ -429,15 +429,15 @@ class _ProjectCardState extends State<_ProjectCard> {
                                   if (link.icon != null) ...[
                                     SmartImageWidget(
                                       source: link.icon!,
-                                      width: 14,
-                                      height: 14,
-                                      errorWidget: const Icon(
+                                      width: 14.w.clamp(12, 16),
+                                      height: 14.w.clamp(12, 16),
+                                      errorWidget: Icon(
                                         Icons.link,
-                                        size: 14,
+                                        size: 14.w.clamp(12, 16),
                                         color: AppColors.orangeYellowCrayola,
                                       ),
                                     ),
-                                    const SizedBox(width: 6),
+                                    const SizedBox(width: 5),
                                   ],
                                   Text(
                                     link.name,
