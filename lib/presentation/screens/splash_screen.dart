@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
+import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
 import 'package:nahid_hasan_noyon/core/widgets/common/smart_image_widget.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -355,6 +356,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final isMobile = Responsive.isMobile(context);
 
     return Scaffold(
       backgroundColor: const Color(0xFF050505),
@@ -427,12 +429,12 @@ class _SplashScreenState extends State<SplashScreen>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // Animated logo with rings and glow
-                  _buildAnimatedLogo(),
+                  _buildAnimatedLogo(isMobile),
 
-                  const SizedBox(height: 100),
+                  SizedBox(height: isMobile ? 50 : 100),
 
                   // Animated text section
-                  _buildAnimatedText(),
+                  _buildAnimatedText(isMobile),
                 ],
               ),
             ),
@@ -503,7 +505,7 @@ class _SplashScreenState extends State<SplashScreen>
     });
   }
 
-  Widget _buildAnimatedLogo() {
+  Widget _buildAnimatedLogo(bool isMobile) {
     return AnimatedBuilder(
       animation: Listenable.merge([
         _logoController,
@@ -550,10 +552,10 @@ class _SplashScreenState extends State<SplashScreen>
                           ),
                         ],
                       ),
-                      child: const SmartImageWidget(
-                        source: 'assets/jsons/flutter-logo-loading.json',
-                        width: 220,
-                        height: 220,
+                      child: SmartImageWidget(
+                        source: 'assets/images/gifs/flutter-logo-loading.gif',
+                        width: isMobile ? 150 : 220,
+                        height: isMobile ? 150 : 220,
                       ),
                     ),
                   ),
@@ -592,7 +594,7 @@ class _SplashScreenState extends State<SplashScreen>
     });
   }
 
-  Widget _buildAnimatedText() {
+  Widget _buildAnimatedText(bool isMobile) {
     return AnimatedBuilder(
       animation: Listenable.merge([_textController, _shimmerController]),
       builder: (context, child) {
@@ -605,7 +607,7 @@ class _SplashScreenState extends State<SplashScreen>
                 opacity: _nameOpacity.value.clamp(0.0, 1.0),
                 child: _buildShimmerText(
                   'Nahid Hasan Noyon',
-                  fontSize: 36,
+                  fontSize: isMobile ? 28 : 36,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.5,
                 ),
@@ -635,7 +637,7 @@ class _SplashScreenState extends State<SplashScreen>
                   child: Text(
                     'FLUTTER DEVELOPER',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: isMobile ? 13 : 14,
                       color: AppColors.white1.withValues(alpha: 0.8),
                       letterSpacing: 6,
                       fontWeight: FontWeight.w300,
@@ -645,7 +647,7 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             ),
 
-            const SizedBox(height: 80),
+            SizedBox(height: isMobile ? 50 : 80),
 
             // Dev > loading text
             Row(
@@ -655,7 +657,7 @@ class _SplashScreenState extends State<SplashScreen>
                 // De text with glow
                 Opacity(
                   opacity: _deOpacity.value.clamp(0.0, 1.0),
-                  child: _buildGlowText('De', 72),
+                  child: _buildGlowText('De', isMobile ? 52 : 72),
                 ),
 
                 // v that rotates to > with glow
@@ -665,14 +667,14 @@ class _SplashScreenState extends State<SplashScreen>
                     offset: Offset(_vTranslation.value, 0),
                     child: Transform.rotate(
                       angle: _vRotation.value,
-                      child: _buildGlowText('v', 72),
+                      child: _buildGlowText('v', isMobile ? 52 : 72),
                     ),
                   ),
                 ),
 
                 // Loading text with typing effect
                 if (_showLoadingText && _loadingText.isNotEmpty)
-                  _buildLoadingText(),
+                  _buildLoadingText(isMobile),
               ],
             ),
           ],
@@ -757,7 +759,7 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 
-  Widget _buildLoadingText() {
+  Widget _buildLoadingText(bool isMobile) {
     return AnimatedBuilder(
       animation: Listenable.merge([_glowController, _shimmerController]),
       builder: (context, child) {
@@ -779,7 +781,7 @@ class _SplashScreenState extends State<SplashScreen>
           child: Text(
             _loadingText,
             style: TextStyle(
-              fontSize: 52,
+              fontSize: isMobile ? 40 : 52,
               fontWeight: FontWeight.w300,
               color: Colors.white,
               letterSpacing: 4,

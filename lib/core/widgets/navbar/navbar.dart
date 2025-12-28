@@ -133,7 +133,7 @@ class _NavItemState extends State<_NavItem> {
               tablet: 10,
               desktop: 15,
             ),
-            vertical: isDesktop ? 15 : 20,
+            vertical: 15,
           ),
           child: AnimatedDefaultTextStyle(
             duration: const Duration(milliseconds: 250),

@@ -137,7 +137,7 @@ class _SidebarState extends State<Sidebar> {
           style: AppTextStyles.h3.copyWith(
             fontSize: Responsive.getValue(
               context,
-              mobile: AppTextStyles.fs2,
+              mobile: AppTextStyles.fs4,
               tablet: AppTextStyles.fs2,
             ),
           ),

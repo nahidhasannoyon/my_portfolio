@@ -69,6 +69,7 @@ flutter:
   # Assets for the portfolio
   assets:
     - assets/images/
+    - assets/images/gifs/
     - assets/images/certificates/Courses/ChatGPT/
     - assets/images/certificates/Courses/Flutter/
     - assets/images/certificates/Courses/Git/

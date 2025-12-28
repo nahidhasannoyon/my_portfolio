@@ -160,7 +160,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
         crossAxisCount: crossAxisCount,
         crossAxisSpacing: 15.w.clamp(13, 17),
         mainAxisSpacing: 15.w.clamp(13, 17),
-        childAspectRatio: crossAxisCount == 1 ? 1.8 : .8,
+        childAspectRatio: crossAxisCount == 1 ? 1.4 : .8,
       ),
       itemCount: _filteredProjects.length,
       itemBuilder: (context, index) {
