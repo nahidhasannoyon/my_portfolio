@@ -67,7 +67,7 @@ class AboutPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-         Text("What I'm doing", style: AppTextStyles.h3),
+        Text("What I'm doing", style: AppTextStyles.h3),
         const SizedBox(height: 20),
         LayoutBuilder(
           builder: (context, constraints) {
@@ -108,7 +108,7 @@ class AboutPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-         Text('Languages', style: AppTextStyles.h3),
+        Text('Languages', style: AppTextStyles.h3),
         const SizedBox(height: 20),
         Wrap(
           spacing: 20,
@@ -125,7 +125,7 @@ class AboutPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-         Text('Testimonials', style: AppTextStyles.h3),
+        Text('Testimonials', style: AppTextStyles.h3),
         const SizedBox(height: 20),
         SizedBox(
           height: 220,
@@ -185,8 +185,7 @@ class _ClientsSectionState extends State<_ClientsSection> {
 
   @override
   Widget build(BuildContext context) {
-    final isDesktop =
-        Responsive.isDesktop(context) || Responsive.isLargeDesktop(context);
+    final isDesktop = Responsive.isDesktop(context);
     final clientCount = PortfolioContent.clients.length;
 
     // Show scrollbar only on desktop when more than 3 clients
@@ -195,7 +194,7 @@ class _ClientsSectionState extends State<_ClientsSection> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-         Text('Clients', style: AppTextStyles.h3),
+        Text('Clients', style: AppTextStyles.h3),
         const SizedBox(height: 20),
         if (showScrollbar)
           RawScrollbar(

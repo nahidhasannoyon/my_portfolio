@@ -35,17 +35,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isLargeDesktop = Responsive.isLargeDesktop(context);
-    final isDesktopOrLarger = Responsive.isDesktopOrLarger(context);
+    final isDesktop = Responsive.isDesktop(context);
 
     return Scaffold(
       backgroundColor: AppColors.smokyBlack,
       body: SafeArea(
-        child: isLargeDesktop
+        child: isDesktop
             ? _buildLargeDesktopLayout()
-            : _buildMobileTabletLayout(isDesktopOrLarger),
+            : _buildMobileTabletLayout(isDesktop),
       ),
-      bottomNavigationBar: isDesktopOrLarger ? null : _buildNavBar(),
+      bottomNavigationBar: isDesktop ? null : _buildNavBar(),
     );
   }
 
@@ -55,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Expanded(
           child: Center(
             child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 1300),
+              constraints: const BoxConstraints(maxWidth: 1200),
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 30, left: 15, right: 15),
                 child: Column(

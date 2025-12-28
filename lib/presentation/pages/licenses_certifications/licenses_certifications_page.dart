@@ -51,7 +51,7 @@ class _LicensesCertificationsPageState
 
   Widget _buildFilter(BuildContext context) {
     final isDesktop =
-        Responsive.isDesktopOrLarger(context) ||
+        Responsive.isDesktop(context) ||
         MediaQuery.of(context).size.width >= 768;
 
     if (isDesktop) {

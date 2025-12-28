@@ -23,9 +23,9 @@ class NavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDesktopOrLarger = Responsive.isDesktopOrLarger(context);
+    final isDesktop = Responsive.isDesktop(context);
 
-    if (isDesktopOrLarger) {
+    if (isDesktop) {
       return _buildDesktopNav(context);
     }
     return _buildMobileNav(context);
@@ -108,7 +108,7 @@ class _NavItemState extends State<_NavItem> {
 
   @override
   Widget build(BuildContext context) {
-    final isDesktop = Responsive.isDesktopOrLarger(context);
+    final isDesktop = Responsive.isDesktop(context);
 
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),

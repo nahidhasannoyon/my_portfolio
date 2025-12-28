@@ -124,7 +124,7 @@ class _ContactPageState extends State<ContactPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           Text('Contact Form', style: AppTextStyles.h3),
+          Text('Contact Form', style: AppTextStyles.h3),
           const SizedBox(height: 20),
           if (isDesktop)
             Row(
@@ -269,10 +269,7 @@ class _FormInputState extends State<_FormInput> {
       focusNode: _focusNode,
       maxLines: widget.maxLines,
       keyboardType: widget.keyboardType,
-      style: const TextStyle(
-        fontSize: 14,
-        color: AppColors.white2,
-      ),
+      style: const TextStyle(fontSize: 14, color: AppColors.white2),
       decoration: InputDecoration(
         hintText: widget.hintText,
         hintStyle: const TextStyle(

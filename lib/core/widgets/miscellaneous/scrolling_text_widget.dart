@@ -62,10 +62,7 @@ class ScrollingTextWidgetState extends State<ScrollingTextWidget> {
     if (widget.text.length <= 20) {
       return Text(
         widget.text,
-        style: const TextStyle(
-          fontSize: 13,
-          color: AppColors.white2,
-        ),
+        style: const TextStyle(fontSize: 13, color: AppColors.white2),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       );
@@ -83,19 +80,13 @@ class ScrollingTextWidgetState extends State<ScrollingTextWidget> {
           children: [
             Text(
               repeated,
-              style: const TextStyle(
-                fontSize: 14,
-                color: AppColors.white2,
-              ),
+              style: const TextStyle(fontSize: 14, color: AppColors.white2),
               maxLines: 1,
               overflow: TextOverflow.visible,
             ),
             Text(
               repeated,
-              style: const TextStyle(
-                fontSize: 14,
-                color: AppColors.white2,
-              ),
+              style: const TextStyle(fontSize: 14, color: AppColors.white2),
               maxLines: 1,
               overflow: TextOverflow.visible,
             ),

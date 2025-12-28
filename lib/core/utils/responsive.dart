@@ -4,9 +4,7 @@ import 'package:nahid_hasan_noyon/core/utils/enums.dart';
 class Responsive {
   static DeviceType getDeviceType(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
-    if (width >= 1250) {
-      return DeviceType.largeDesktop;
-    } else if (width >= 1024) {
+    if (width >= 1024) {
       return DeviceType.desktop;
     } else if (width >= 600) {
       return DeviceType.tablet;
@@ -24,14 +22,6 @@ class Responsive {
   static bool isDesktop(BuildContext context) =>
       getDeviceType(context) == DeviceType.desktop;
 
-  static bool isLargeDesktop(BuildContext context) =>
-      getDeviceType(context) == DeviceType.largeDesktop;
-
-  static bool isDesktopOrLarger(BuildContext context) {
-    final device = getDeviceType(context);
-    return device == DeviceType.desktop || device == DeviceType.largeDesktop;
-  }
-
   static bool isTabletOrLarger(BuildContext context) {
     final device = getDeviceType(context);
     return device != DeviceType.mobile;
@@ -45,8 +35,6 @@ class Responsive {
     double? largeDesktop,
   }) {
     switch (getDeviceType(context)) {
-      case DeviceType.largeDesktop:
-        return largeDesktop ?? desktop ?? tablet ?? mobile;
       case DeviceType.desktop:
         return desktop ?? tablet ?? mobile;
       case DeviceType.tablet:
@@ -64,8 +52,6 @@ class Responsive {
     T? largeDesktop,
   }) {
     switch (getDeviceType(context)) {
-      case DeviceType.largeDesktop:
-        return largeDesktop ?? desktop ?? tablet ?? mobile;
       case DeviceType.desktop:
         return desktop ?? tablet ?? mobile;
       case DeviceType.tablet:
