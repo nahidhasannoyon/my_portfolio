@@ -127,7 +127,6 @@ class _EducationItemWidget extends StatelessWidget {
                     Text(
                       item.dateRange,
                       style: const TextStyle(
-                        fontFamily: AppTextStyles.fontFamily,
                         fontSize: 14,
                         color: AppColors.vegasGold,
                       ),

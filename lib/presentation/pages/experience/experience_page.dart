@@ -126,7 +126,6 @@ class _TimelineItemWidget extends StatelessWidget {
                       Text(
                         item.dateRange,
                         style: const TextStyle(
-                          fontFamily: AppTextStyles.fontFamily,
                           fontSize: 13,
                           color: AppColors.vegasGold,
                         ),
@@ -140,7 +139,6 @@ class _TimelineItemWidget extends StatelessWidget {
                       Text(
                         item.role,
                         style: const TextStyle(
-                          fontFamily: AppTextStyles.fontFamily,
                           fontSize: 13,
                           color: AppColors.white1,
                           fontWeight: FontWeight.w500,
@@ -159,7 +157,6 @@ class _TimelineItemWidget extends StatelessWidget {
                       Text(
                         item.location,
                         style: const TextStyle(
-                          fontFamily: AppTextStyles.fontFamily,
                           fontSize: 13,
                           color: AppColors.lightGray,
                         ),

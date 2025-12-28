@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
 import 'package:nahid_hasan_noyon/core/widgets/common/smart_image_widget.dart';
 
@@ -709,6 +710,7 @@ class _SplashScreenState extends State<SplashScreen>
         text,
         style: TextStyle(
           fontSize: fontSize,
+          fontFamily: GoogleFonts.borel().fontFamily,
           fontWeight: fontWeight,
           color: Colors.white,
           letterSpacing: letterSpacing,

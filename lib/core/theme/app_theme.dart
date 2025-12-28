@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppColors {
   // Gradients
@@ -53,7 +54,7 @@ class AppColors {
 }
 
 class AppTextStyles {
-  static const String fontFamily = 'Poppins';
+  static TextStyle get _baseTextStyle => GoogleFonts.roboto();
 
   // Font sizes
   static const double fs1 = 32; //
@@ -65,44 +66,38 @@ class AppTextStyles {
   static const double fs7 = 13;
   static const double fs8 = 12; //
 
-  static const TextStyle h2 = TextStyle(
-    fontFamily: fontFamily,
+  static TextStyle get h2 => _baseTextStyle.copyWith(
     fontSize: fs1,
     fontWeight: FontWeight.w700,
     color: AppColors.white2,
   );
 
-  static const TextStyle h3 = TextStyle(
-    fontFamily: fontFamily,
+  static TextStyle get h3 => _baseTextStyle.copyWith(
     fontSize: fs2,
     fontWeight: FontWeight.w700,
     color: AppColors.white2,
   );
 
-  static const TextStyle h4 = TextStyle(
-    fontFamily: fontFamily,
+  static TextStyle get h4 => _baseTextStyle.copyWith(
     fontSize: fs4,
     fontWeight: FontWeight.w700,
     color: AppColors.white2,
   );
 
-  static const TextStyle h5 = TextStyle(
-    fontFamily: fontFamily,
+  static TextStyle get h5 => _baseTextStyle.copyWith(
     fontSize: fs7,
     fontWeight: FontWeight.w500,
     color: AppColors.white2,
   );
 
-  static const TextStyle bodyText = TextStyle(
-    fontFamily: fontFamily,
+  static TextStyle get bodyText => _baseTextStyle.copyWith(
     fontSize: fs5,
     fontWeight: FontWeight.w300,
     color: AppColors.lightGray,
     height: 1.6,
   );
 
-  static const TextStyle smallText = TextStyle(
-    fontFamily: fontFamily,
+  static TextStyle get smallText => _baseTextStyle.copyWith(
     fontSize: fs8,
     fontWeight: FontWeight.w300,
     color: AppColors.lightGray70,
@@ -144,7 +139,7 @@ class AppShadows {
 ThemeData getAppTheme() {
   return ThemeData(
     useMaterial3: true,
-    fontFamily: AppTextStyles.fontFamily,
+    fontFamily: GoogleFonts.roboto().fontFamily,
     scaffoldBackgroundColor: AppColors.smokyBlack,
     colorScheme: const ColorScheme.dark(
       primary: AppColors.orangeYellowCrayola,

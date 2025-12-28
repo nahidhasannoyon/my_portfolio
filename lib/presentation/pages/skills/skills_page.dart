@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
 import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
-import 'package:nahid_hasan_noyon/data/portfolio_content.dart';
 import 'package:nahid_hasan_noyon/core/widgets/common/common_widgets.dart';
+import 'package:nahid_hasan_noyon/data/portfolio_content.dart';
 
 class SkillsPage extends StatelessWidget {
   const SkillsPage({super.key});
@@ -39,7 +39,7 @@ class SkillsPage extends StatelessWidget {
               size: Responsive.getValue(context, mobile: 30, tablet: 48),
             ),
             const SizedBox(width: 15),
-            const Text('Technical Skills', style: AppTextStyles.h3),
+            Text('Technical Skills', style: AppTextStyles.h3),
           ],
         ),
         const SizedBox(height: 25),
@@ -87,7 +87,7 @@ class SkillsPage extends StatelessWidget {
               size: Responsive.getValue(context, mobile: 30, tablet: 48),
             ),
             const SizedBox(width: 15),
-            const Text('Soft Skills', style: AppTextStyles.h3),
+            Text('Soft Skills', style: AppTextStyles.h3),
           ],
         ),
         const SizedBox(height: 25),
