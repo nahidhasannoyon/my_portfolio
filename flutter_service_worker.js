@@ -50,7 +50,7 @@ const RESOURCES = {"flutter.js": "24bc71911b75b5f8135c949e27a2984e",
 "assets/assets/jsons/flutter-work.json": "9ecbd8717e971619d8c8b6bafbe90112",
 "assets/assets/docs/Nahid%2520Hasan%2520Noyon%2520Resume.pdf": "ab431c608337a99e9345dc92a91daae3",
 "assets/fonts/MaterialIcons-Regular.otf": "107398792b399c62ac36d5ccbd515ec3",
-"assets/NOTICES": "0a9f8ee382d420279397e4ccb251ba68",
+"assets/NOTICES": "3eeaff2924df64a93a15ef59c6a07e46",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "33b7d9392238c04c131b6ce224e13711",
 "assets/packages/flutter_map/lib/assets/flutter_map_logo.png": "208d63cc917af9713fc9572bd5c09362",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
@@ -67,9 +67,9 @@ const RESOURCES = {"flutter.js": "24bc71911b75b5f8135c949e27a2984e",
 "canvaskit/skwasm.wasm": "7e5f3afdd3b0747a1fd4517cea239898",
 "canvaskit/canvaskit.js.symbols": "a3c9f77715b642d0437d9c275caba91e",
 "canvaskit/skwasm.js.symbols": "3a4aadf4e8141f284bd524976b1d6bdc",
-"flutter_bootstrap.js": "412ccfcc59cf3a0fe170501c37804697",
+"flutter_bootstrap.js": "5d4c2121fd80c2b4fbceb1034da19344",
 "version.json": "f28137bf46763fe8489b8e800c114ab5",
-"main.dart.js": "f909f0f99649c1dac981a994948358d0"};
+"main.dart.js": "e051b1bd47a86a1d15bc87e14be4c9c0"};
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = ["main.dart.js",
