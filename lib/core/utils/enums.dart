@@ -1,3 +1,3 @@
 enum ContactAction { none, copyEmail, dialPhone, openLocation }
 
-enum DeviceType { mobile, tablet, desktop, largeDesktop }
+enum DeviceType { mobile, tablet, desktop }

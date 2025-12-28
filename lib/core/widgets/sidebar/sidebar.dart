@@ -23,14 +23,21 @@ class _SidebarState extends State<Sidebar> {
 
   @override
   Widget build(BuildContext context) {
-    final isLargeDesktop = Responsive.isLargeDesktop(context);
+    final isDesktop = Responsive.isDesktop(context);
+    final isTablet = Responsive.isTablet(context);
     const PersonInfo person = PortfolioContent.person;
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
       constraints: BoxConstraints(
-        maxHeight: isLargeDesktop ? double.infinity : (_isExpanded ? 600 : 112),
+        maxHeight: isDesktop
+            ? double.infinity
+            : (_isExpanded
+                  ? 650
+                  : isTablet
+                  ? 180
+                  : 150),
       ),
       decoration: BoxDecoration(
         color: AppColors.eerieBlack2,
@@ -40,7 +47,7 @@ class _SidebarState extends State<Sidebar> {
       ),
       clipBehavior: Clip.antiAlias,
       child: SingleChildScrollView(
-        physics: isLargeDesktop
+        physics: isDesktop
             ? const NeverScrollableScrollPhysics()
             : const ClampingScrollPhysics(),
         child: Padding(
@@ -50,10 +57,10 @@ class _SidebarState extends State<Sidebar> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              _buildSidebarInfo(context, person, isLargeDesktop),
+              _buildSidebarInfo(context, person, isDesktop),
               AnimatedOpacity(
                 duration: const Duration(milliseconds: 500),
-                opacity: _isExpanded || isLargeDesktop ? 1 : 0,
+                opacity: _isExpanded || isDesktop ? 1 : 0,
                 child: _buildSidebarMore(context, person),
               ),
             ],
@@ -63,33 +70,33 @@ class _SidebarState extends State<Sidebar> {
     );
   }
 
-  Widget _buildSidebarInfo(BuildContext context, person, bool isLargeDesktop) {
+  Widget _buildSidebarInfo(BuildContext context, person, bool isDesktop) {
     return Stack(
       clipBehavior: Clip.none,
       children: [
         Row(
-          mainAxisAlignment: isLargeDesktop
+          mainAxisAlignment: isDesktop
               ? MainAxisAlignment.center
               : MainAxisAlignment.start,
           children: [
-            if (isLargeDesktop)
+            if (isDesktop)
               Expanded(
                 child: Column(
                   children: [
                     _buildAvatar(context, person),
                     const SizedBox(height: 15),
-                    _buildNameTitle(context, person, isLargeDesktop),
+                    _buildNameTitle(context, person, isDesktop),
                   ],
                 ),
               )
             else ...[
               _buildAvatar(context, person),
               const SizedBox(width: 15),
-              Expanded(child: _buildNameTitle(context, person, isLargeDesktop)),
+              Expanded(child: _buildNameTitle(context, person, isDesktop)),
             ],
           ],
         ),
-        if (!isLargeDesktop)
+        if (!isDesktop)
           Positioned(top: -15, right: -15, child: _buildMoreButton(context)),
       ],
     );
@@ -100,7 +107,7 @@ class _SidebarState extends State<Sidebar> {
       context,
       mobile: 80.0,
       tablet: 120.0,
-      largeDesktop: 150.0,
+      desktop: 150.0,
     );
 
     return SmartImageWidget(
@@ -118,10 +125,10 @@ class _SidebarState extends State<Sidebar> {
   Widget _buildNameTitle(
     BuildContext context,
     PersonInfo person,
-    bool isLargeDesktop,
+    bool isDesktop,
   ) {
     return Column(
-      crossAxisAlignment: isLargeDesktop
+      crossAxisAlignment: isDesktop
           ? CrossAxisAlignment.center
           : CrossAxisAlignment.start,
       children: [
@@ -134,7 +141,7 @@ class _SidebarState extends State<Sidebar> {
               tablet: AppTextStyles.fs2,
             ),
           ),
-          textAlign: isLargeDesktop ? TextAlign.center : TextAlign.start,
+          textAlign: isDesktop ? TextAlign.center : TextAlign.start,
         ),
         const SizedBox(height: 10),
         Container(
@@ -264,7 +271,7 @@ class _SidebarState extends State<Sidebar> {
   }
 
   Widget _buildContactsList(BuildContext context, PersonInfo person) {
-    final isLargeDesktop = Responsive.isLargeDesktop(context);
+    final isDesktop = Responsive.isDesktop(context);
 
     final contacts = [
       ContactData(
@@ -287,7 +294,7 @@ class _SidebarState extends State<Sidebar> {
       ),
     ];
 
-    if (isLargeDesktop) {
+    if (isDesktop) {
       return Column(
         children: contacts
             .map(
@@ -308,8 +315,8 @@ class _SidebarState extends State<Sidebar> {
       crossAxisCount: Responsive.isDesktop(context) ? 2 : 1,
       childAspectRatio: Responsive.getValue(
         context,
-        mobile: 5,
-        tablet: 6,
+        mobile: 10,
+        tablet: 10,
         desktop: 4,
       ),
       mainAxisSpacing: 16,
@@ -367,14 +374,11 @@ class _SidebarState extends State<Sidebar> {
 
     Widget textWidget = Text(
       text,
-      style: const TextStyle(
-        fontSize: 14,
-        color: AppColors.white2,
-      ),
+      style: const TextStyle(fontSize: 14, color: AppColors.white2),
       // overflow: TextOverflow.ellipsis,
     );
 
-    if (isLong) {
+    if (isLong && Responsive.isDesktop(context)) {
       textWidget = ScrollingTextWidget(text: text);
     }
 

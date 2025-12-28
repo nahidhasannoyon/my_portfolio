@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
 import 'package:nahid_hasan_noyon/core/utils/cursor_service.dart';
 import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
@@ -51,7 +52,7 @@ class _LicensesCertificationsPageState
 
   Widget _buildFilter(BuildContext context) {
     final isDesktop =
-        Responsive.isDesktopOrLarger(context) ||
+        Responsive.isDesktop(context) ||
         MediaQuery.of(context).size.width >= 768;
 
     if (isDesktop) {
@@ -159,9 +160,9 @@ class _LicensesCertificationsPageState
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,
-        crossAxisSpacing: 30,
-        mainAxisSpacing: 30,
-        childAspectRatio: crossAxisCount == 1 ? 0.85 : 0.55,
+        crossAxisSpacing: 15.w.clamp(13, 17),
+        mainAxisSpacing: 15.w.clamp(13, 17),
+        childAspectRatio: crossAxisCount == 1 ? 1.1 : .45,
       ),
       itemCount: _filteredCertifications.length,
       itemBuilder: (context, index) {
@@ -260,7 +261,7 @@ class _CertificationCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.eerieBlack2,
         border: Border.all(color: AppColors.jet),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.r),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -274,9 +275,9 @@ class _CertificationCard extends StatelessWidget {
                   height: 180,
                   width: double.infinity,
                   fit: BoxFit.cover,
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(16),
-                    topRight: Radius.circular(16),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(16.r),
+                    topRight: Radius.circular(16.r),
                   ),
                   errorWidget: Container(
                     height: 180,
@@ -347,7 +348,7 @@ class _CertificationCard extends StatelessWidget {
           ],
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(20),
+              padding: EdgeInsets.all(15.w.clamp(12, 18)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -356,9 +357,9 @@ class _CertificationCard extends StatelessWidget {
                     children: [
                       SmartImageWidget(
                         source: certification.issuerLogo,
-                        width: 40,
+                        width: 40.w.clamp(36, 44),
                         borderRadius: BorderRadius.circular(8),
-                        height: 40,
+                        height: 40.w.clamp(36, 44),
                         backgroundColor: AppColors.jet,
                         padding: const EdgeInsets.all(6),
                         errorWidget: Center(
@@ -370,7 +371,7 @@ class _CertificationCard extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(width: 12),
+                      SizedBox(width: 12.w.clamp(10, 14)),
                       Expanded(
                         child: Text(
                           certification.issuer,
@@ -382,18 +383,20 @@ class _CertificationCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 15),
+                  SizedBox(height: 10.w.clamp(8, 12)),
                   // Title
                   Text(
                     certification.title,
                     style: AppTextStyles.h4.copyWith(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
+                      height: 1.3,
                     ),
                     maxLines: 3,
+
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.w.clamp(8, 12)),
                   // Issue Date
                   if (certification.issueDate != null) ...[
                     Row(
@@ -419,16 +422,16 @@ class _CertificationCard extends StatelessWidget {
                   // Skills if available
                   if (certification.skills != null &&
                       certification.skills!.isNotEmpty) ...[
-                    const SizedBox(height: 15),
                     Wrap(
-                      spacing: 6,
-                      runSpacing: 4,
+                      spacing: 6.w.clamp(4, 8),
+                      runSpacing: 4.w.clamp(3, 5),
                       children: certification.skills!
+                          .take(3)
                           .map(
                             (skill) => Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                                vertical: 4,
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 8.w.clamp(6, 10),
+                                vertical: 4.w.clamp(3, 5),
                               ),
                               decoration: BoxDecoration(
                                 color: AppColors.jet,
@@ -448,7 +451,7 @@ class _CertificationCard extends StatelessWidget {
                   ],
                   // Credential Link if available
                   if (certification.credentialLink != null) ...[
-                    const SizedBox(height: 12),
+                    SizedBox(height: 10.w.clamp(8, 12)),
                     MouseRegion(
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
@@ -464,9 +467,9 @@ class _CertificationCard extends StatelessWidget {
                           }
                         },
                         child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 8,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 12.w.clamp(10, 14),
+                            vertical: 8.w.clamp(6, 10),
                           ),
                           decoration: BoxDecoration(
                             border: Border.all(

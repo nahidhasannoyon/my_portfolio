@@ -159,7 +159,7 @@ class SmartImageWidget extends StatelessWidget {
                 _buildErrorWidget(context),
           );
 
-    return lottieWidget;
+    return RepaintBoundary(child: lottieWidget);
   }
 
   Widget _buildSvgImage(String src, ImageSourceType type) {

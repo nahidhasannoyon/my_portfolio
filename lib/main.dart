@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
 import 'package:nahid_hasan_noyon/presentation/screens/home_screen.dart';
 import 'package:nahid_hasan_noyon/presentation/screens/splash_screen.dart';
@@ -12,11 +13,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Nahid Hasan Noyon - Portfolio',
-      debugShowCheckedModeBanner: false,
-      theme: getAppTheme(),
-      home: const SplashScreen(nextScreen: HomeScreen()),
+    return ScreenUtilInit(
+      designSize: const Size(1200, 900),
+      builder: (_, child) {
+        return MaterialApp(
+          title: 'Nahid Hasan Noyon - Portfolio',
+          debugShowCheckedModeBanner: false,
+          theme: getAppTheme(),
+          home: const SplashScreen(nextScreen: HomeScreen()),
+        );
+      },
     );
   }
 }

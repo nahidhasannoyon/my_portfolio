@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
 import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
+import 'package:nahid_hasan_noyon/core/widgets/common/common_widgets.dart';
 import 'package:nahid_hasan_noyon/data/models/portfolio_data.dart';
 import 'package:nahid_hasan_noyon/data/portfolio_content.dart';
-import 'package:nahid_hasan_noyon/core/widgets/common/common_widgets.dart';
 
 class EducationPage extends StatelessWidget {
   const EducationPage({super.key});
@@ -90,6 +90,8 @@ class _EducationItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isTablet = Responsive.isTablet(context);
+    final isDesktop = Responsive.isDesktop(context);
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -117,39 +119,69 @@ class _EducationItemWidget extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      item.course,
-                      style: AppTextStyles.h4.copyWith(
-                        fontSize: 14,
-                        height: 1.3,
+                    SizedBox(
+                      width: isTablet || !isDesktop ? 300 : null,
+                      child: Text(
+                        item.course,
+                        style: AppTextStyles.h4.copyWith(
+                          fontSize: 14,
+                          height: 1.3,
+                        ),
                       ),
                     ),
-                    Text(
-                      item.dateRange,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: AppColors.vegasGold,
+                    if (isDesktop)
+                      Text(
+                        item.dateRange,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: AppColors.vegasGold,
+                        ),
                       ),
-                    ),
                   ],
                 ),
+                if (isTablet || !isDesktop) ...[
+                  const SizedBox(height: 5),
+                  Text(
+                    item.dateRange,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      color: AppColors.vegasGold,
+                    ),
+                  ),
+                ],
                 const SizedBox(height: 7),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      item.institution,
-                      style: AppTextStyles.bodyText.copyWith(fontSize: 14),
-                    ),
-                    Text(
-                      item.location,
-                      style: AppTextStyles.bodyText.copyWith(
-                        fontSize: 12,
-                        color: AppColors.vegasGold.withValues(alpha: 0.7),
+                    SizedBox(
+                      width: isTablet || !isDesktop ? 300 : null,
+                      child: Text(
+                        item.institution,
+                        style: AppTextStyles.bodyText.copyWith(fontSize: 14),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
+                    if (isDesktop)
+                      Text(
+                        item.location,
+                        style: AppTextStyles.bodyText.copyWith(
+                          fontSize: 12,
+                          color: AppColors.vegasGold.withValues(alpha: 0.7),
+                        ),
+                      ),
                   ],
                 ),
+                if (isTablet || !isDesktop) ...[
+                  const SizedBox(height: 5),
+                  Text(
+                    item.location,
+                    style: AppTextStyles.bodyText.copyWith(
+                      fontSize: 12,
+                      color: AppColors.vegasGold.withValues(alpha: 0.7),
+                    ),
+                  ),
+                ],
               ],
             ),
           ),

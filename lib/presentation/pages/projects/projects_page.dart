@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
 import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
 import 'package:nahid_hasan_noyon/core/widgets/common/common_widgets.dart';
@@ -51,7 +52,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
 
   Widget _buildFilter(BuildContext context) {
     final isDesktop =
-        Responsive.isDesktopOrLarger(context) ||
+        Responsive.isDesktop(context) ||
         MediaQuery.of(context).size.width >= 768;
 
     if (isDesktop) {
@@ -157,9 +158,9 @@ class _ProjectsPageState extends State<ProjectsPage> {
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,
-        crossAxisSpacing: 30,
-        mainAxisSpacing: 30,
-        childAspectRatio: crossAxisCount == 1 ? 1.8 : 1,
+        crossAxisSpacing: 15.w.clamp(13, 17),
+        mainAxisSpacing: 15.w.clamp(13, 17),
+        childAspectRatio: crossAxisCount == 1 ? 1.8 : .8,
       ),
       itemCount: _filteredProjects.length,
       itemBuilder: (context, index) {
@@ -283,10 +284,10 @@ class _ProjectCardState extends State<_ProjectCard> {
         onTap: () => _showProjectModal(context),
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 250),
-          padding: const EdgeInsets.all(20),
+          padding: EdgeInsets.all(15.w.clamp(12, 18)),
           decoration: BoxDecoration(
             color: AppColors.eerieBlack2,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(16.r),
             border: Border.all(
               color: _isHovered ? AppColors.orangeYellowCrayola : AppColors.jet,
             ),
@@ -345,7 +346,7 @@ class _ProjectCardState extends State<_ProjectCard> {
                 ),
               ],
               if (widget.project.description != null) ...[
-                const SizedBox(height: 12),
+                const SizedBox(height: 8),
                 Text(
                   widget.project.description!,
                   maxLines: 3,
@@ -364,12 +365,12 @@ class _ProjectCardState extends State<_ProjectCard> {
                   spacing: 6,
                   runSpacing: 6,
                   children: widget.project.keywords!
-                      .take(4)
+                      .take(3)
                       .map(
                         (keyword) => Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 10,
-                            vertical: 5,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10.w.clamp(8, 12),
+                            vertical: 5.w.clamp(4, 6),
                           ),
                           decoration: BoxDecoration(
                             color: AppColors.jet,
@@ -396,66 +397,63 @@ class _ProjectCardState extends State<_ProjectCard> {
               if (widget.project.links != null &&
                   widget.project.links!.isNotEmpty) ...[
                 const SizedBox(height: 12),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10, right: 10),
-                  child: Wrap(
-                    spacing: 10,
-                    runSpacing: 8,
-                    children: widget.project.links!
-                        .map(
-                          (link) => MouseRegion(
-                            cursor: SystemMouseCursors.click,
-                            child: GestureDetector(
-                              onTap: () async {
-                                if (link.url != '#') {
-                                  if (await canLaunchUrl(Uri.parse(link.url))) {
-                                    await launchUrl(Uri.parse(link.url));
-                                  }
+                Wrap(
+                  spacing: 5.w.clamp(4, 6),
+                  runSpacing: 5.w.clamp(4, 6),
+                  children: widget.project.links!
+                      .map(
+                        (link) => MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: GestureDetector(
+                            onTap: () async {
+                              if (link.url != '#') {
+                                if (await canLaunchUrl(Uri.parse(link.url))) {
+                                  await launchUrl(Uri.parse(link.url));
                                 }
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: 6,
+                              }
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 10.w.clamp(8, 12),
+                                vertical: 6.w.clamp(5, 7),
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: AppColors.orangeYellowCrayola,
                                 ),
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: AppColors.orangeYellowCrayola,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    if (link.icon != null) ...[
-                                      SmartImageWidget(
-                                        source: link.icon!,
-                                        width: 14,
-                                        height: 14,
-                                        errorWidget: const Icon(
-                                          Icons.link,
-                                          size: 14,
-                                          color: AppColors.orangeYellowCrayola,
-                                        ),
-                                      ),
-                                      const SizedBox(width: 6),
-                                    ],
-                                    Text(
-                                      link.name,
-                                      style: AppTextStyles.bodyText.copyWith(
-                                        fontSize: 13,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  if (link.icon != null) ...[
+                                    SmartImageWidget(
+                                      source: link.icon!,
+                                      width: 14.w.clamp(12, 16),
+                                      height: 14.w.clamp(12, 16),
+                                      errorWidget: Icon(
+                                        Icons.link,
+                                        size: 14.w.clamp(12, 16),
                                         color: AppColors.orangeYellowCrayola,
-                                        fontWeight: FontWeight.w500,
                                       ),
                                     ),
+                                    const SizedBox(width: 5),
                                   ],
-                                ),
+                                  Text(
+                                    link.name,
+                                    style: AppTextStyles.bodyText.copyWith(
+                                      fontSize: 13,
+                                      color: AppColors.orangeYellowCrayola,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
-                        )
-                        .toList(),
-                  ),
+                        ),
+                      )
+                      .toList(),
                 ),
               ],
             ],

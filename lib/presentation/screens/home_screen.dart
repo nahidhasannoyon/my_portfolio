@@ -35,36 +35,32 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isLargeDesktop = Responsive.isLargeDesktop(context);
-    final isDesktopOrLarger = Responsive.isDesktopOrLarger(context);
+    final isDesktop = Responsive.isDesktop(context);
 
     return Scaffold(
       backgroundColor: AppColors.smokyBlack,
       body: SafeArea(
-        child: isLargeDesktop
-            ? _buildLargeDesktopLayout()
-            : _buildMobileTabletLayout(isDesktopOrLarger),
+        child: isDesktop
+            ? _buildDesktopLayout()
+            : _buildMobileTabletLayout(isDesktop),
       ),
-      bottomNavigationBar: isDesktopOrLarger ? null : _buildNavBar(),
+      bottomNavigationBar: isDesktop ? null : _buildNavBar(),
     );
   }
 
-  Widget _buildLargeDesktopLayout() {
+  Widget _buildDesktopLayout() {
     return Column(
       children: [
         Expanded(
           child: Center(
             child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 1300),
+              constraints: const BoxConstraints(maxWidth: 1200),
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 30, left: 15, right: 15),
                 child: Column(
                   children: [
-                    MouseRegion(
-                      onEnter: (_) => disableCursor(),
-                      onExit: (_) => enableCursor(),
-                      child: _buildNavBar(),
-                    ),
+                    _buildNavBar(),
+
                     const SizedBox(height: 15),
                     Expanded(
                       child: Row(
@@ -99,15 +95,16 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildMobileTabletLayout(bool isDesktopOrLarger) {
+  Widget _buildMobileTabletLayout(bool isDesktop) {
     return Column(
       children: [
         Expanded(
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 12,
-                vertical: Responsive.getValue(context, mobile: 15, tablet: 60),
+              padding: EdgeInsets.only(
+                left: 12,
+                right: 12,
+                top: Responsive.getValue(context, mobile: 15, tablet: 60),
               ),
               child: Center(
                 child: ConstrainedBox(
@@ -139,10 +136,18 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Stack(
                           children: [
                             _buildMainContent(),
-                            if (isDesktopOrLarger) _buildNavBar(),
+                            if (isDesktop) _buildNavBar(),
                           ],
                         ),
                       ),
+                      SizedBox(
+                        height: Responsive.getValue(
+                          context,
+                          mobile: 30,
+                          tablet: 60,
+                        ),
+                      ),
+                      const Footer(),
                     ],
                   ),
                 ),
@@ -150,7 +155,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
-        const Footer(),
       ],
     );
   }
