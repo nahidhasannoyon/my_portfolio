@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
 import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
+import 'package:nahid_hasan_noyon/core/widgets/common/common_widgets.dart';
 import 'package:nahid_hasan_noyon/data/models/portfolio_data.dart';
 import 'package:nahid_hasan_noyon/data/portfolio_content.dart';
-import 'package:nahid_hasan_noyon/core/widgets/common/common_widgets.dart';
 
 class ExperiencePage extends StatelessWidget {
   const ExperiencePage({super.key});
@@ -87,6 +87,8 @@ class _TimelineItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isTablet = Responsive.isTablet(context);
+    final isDesktop = Responsive.isDesktop(context);
     return IntrinsicHeight(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -123,16 +125,27 @@ class _TimelineItemWidget extends StatelessWidget {
                           height: 1.3,
                         ),
                       ),
-                      Text(
-                        item.dateRange,
-                        style: const TextStyle(
-                          fontSize: 13,
-                          color: AppColors.vegasGold,
+                      if (isDesktop)
+                        Text(
+                          item.dateRange,
+                          style: const TextStyle(
+                            fontSize: 13,
+                            color: AppColors.vegasGold,
+                          ),
                         ),
-                      ),
                     ],
                   ),
-                  const SizedBox(height: 5),
+                  if (isTablet) ...[
+                    const SizedBox(height: 5),
+                    Text(
+                      item.dateRange,
+                      style: const TextStyle(
+                        fontSize: 13,
+                        color: AppColors.vegasGold,
+                      ),
+                    ),
+                  ],
+                  const SizedBox(height: 8),
                   Wrap(
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [

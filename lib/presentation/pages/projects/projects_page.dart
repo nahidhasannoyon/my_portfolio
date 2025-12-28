@@ -284,7 +284,7 @@ class _ProjectCardState extends State<_ProjectCard> {
         onTap: () => _showProjectModal(context),
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 250),
-          padding: EdgeInsets.all(15.w),
+          padding: EdgeInsets.all(15.w.clamp(12, 18)),
           decoration: BoxDecoration(
             color: AppColors.eerieBlack2,
             borderRadius: BorderRadius.circular(16.r),

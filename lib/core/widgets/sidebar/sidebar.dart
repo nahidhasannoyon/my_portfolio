@@ -30,7 +30,7 @@ class _SidebarState extends State<Sidebar> {
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
       constraints: BoxConstraints(
-        maxHeight: isDesktop ? double.infinity : (_isExpanded ? 600 : 180),
+        maxHeight: isDesktop ? double.infinity : (_isExpanded ? 650 : 180),
       ),
       decoration: BoxDecoration(
         color: AppColors.eerieBlack2,
@@ -309,7 +309,7 @@ class _SidebarState extends State<Sidebar> {
       childAspectRatio: Responsive.getValue(
         context,
         mobile: 5,
-        tablet: 6,
+        tablet: 10,
         desktop: 4,
       ),
       mainAxisSpacing: 16,
@@ -371,7 +371,7 @@ class _SidebarState extends State<Sidebar> {
       // overflow: TextOverflow.ellipsis,
     );
 
-    if (isLong) {
+    if (isLong && Responsive.isDesktop(context)) {
       textWidget = ScrollingTextWidget(text: text);
     }
 

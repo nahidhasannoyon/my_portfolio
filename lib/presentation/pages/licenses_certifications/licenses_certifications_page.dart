@@ -348,7 +348,7 @@ class _CertificationCard extends StatelessWidget {
           ],
           Expanded(
             child: Padding(
-              padding: EdgeInsets.all(15.w),
+              padding: EdgeInsets.all(15.w.clamp(12, 18)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

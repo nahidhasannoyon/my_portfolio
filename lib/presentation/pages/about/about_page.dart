@@ -79,8 +79,8 @@ class AboutPage extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 crossAxisCount: 2,
                 childAspectRatio: 2.3,
-                crossAxisSpacing: 25.w,
-                mainAxisSpacing: 20.h,
+                crossAxisSpacing: 25.w.clamp(10, 25),
+                mainAxisSpacing: 20.w.clamp(10, 20),
                 children: PortfolioContent.services
                     .map((s) => _ServiceCard(service: s))
                     .toList(),
@@ -269,16 +269,16 @@ class _ServiceCard extends StatelessWidget {
   Widget _buildIcon() {
     return SmartImageWidget(
       source: service.iconPath,
-      width: 40.w,
-      height: 40.w,
-      padding: EdgeInsets.all(8.w),
+      width: 40.w.clamp(35, 50),
+      height: 40.w.clamp(35, 50),
+      padding: EdgeInsets.all(8.w.clamp(5, 10)),
       borderRadius: BorderRadius.circular(8.r),
       backgroundColor: AppColors.orangeYellowCrayola.withValues(alpha: .1),
 
       errorWidget: Icon(
         Icons.design_services,
         color: AppColors.orangeYellowCrayola,
-        size: 24.w,
+        size: 24.w.clamp(20, 30),
       ),
     );
   }

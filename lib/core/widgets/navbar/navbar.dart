@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
+import 'package:nahid_hasan_noyon/core/utils/cursor_service.dart';
 import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
 
 class NavBar extends StatelessWidget {
@@ -26,9 +27,17 @@ class NavBar extends StatelessWidget {
     final isDesktop = Responsive.isDesktop(context);
 
     if (isDesktop) {
-      return _buildDesktopNav(context);
+      return MouseRegion(
+        onEnter: (_) => disableCursor(),
+        onExit: (_) => enableCursor(),
+        child: _buildDesktopNav(context),
+      );
     }
-    return _buildMobileNav(context);
+    return MouseRegion(
+      onEnter: (_) => disableCursor(),
+      onExit: (_) => enableCursor(),
+      child: _buildMobileNav(context),
+    );
   }
 
   Widget _buildDesktopNav(BuildContext context) {
@@ -121,7 +130,7 @@ class _NavItemState extends State<_NavItem> {
             horizontal: Responsive.getValue(
               context,
               mobile: 7,
-              tablet: 15,
+              tablet: 10,
               desktop: 15,
             ),
             vertical: isDesktop ? 15 : 20,

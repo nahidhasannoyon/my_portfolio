@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nahid_hasan_noyon/core/theme/app_theme.dart';
+import 'package:nahid_hasan_noyon/core/utils/responsive.dart';
 
 class Footer extends StatefulWidget {
   const Footer({super.key});
@@ -42,6 +43,7 @@ class _FooterState extends State<Footer> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final isDesktop = Responsive.isDesktop(context);
     final currentYear = DateTime.now().year;
 
     return Container(
@@ -56,16 +58,28 @@ class _FooterState extends State<Footer> with TickerProviderStateMixin {
       ),
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 1300),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            // Copyright with shimmer effect
-            _buildCopyright(currentYear),
-            const SizedBox(height: 16),
-            // Animated "Developed from scratch" section
-            _buildAnimatedDevelopmentSection(),
-          ],
-        ),
+        child: isDesktop
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  // Copyright with shimmer effect
+                  _buildCopyright(currentYear),
+                  const SizedBox(height: 16),
+                  // Animated "Developed from scratch" section
+                  _buildAnimatedDevelopmentSection(),
+                ],
+              )
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  // Animated "Developed from scratch" section
+                  _buildAnimatedDevelopmentSection(),
+                  const SizedBox(height: 5),
+                  // Copyright with shimmer effect
+                  _buildCopyright(currentYear),
+                  const SizedBox(height: 10),
+                ],
+              ),
       ),
     );
   }
