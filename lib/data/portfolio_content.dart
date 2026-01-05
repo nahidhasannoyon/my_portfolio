@@ -594,7 +594,7 @@ class PortfolioContent {
       issuerLogo: 'assets/images/udemy.png',
       category: 'Version Control',
       imageUrl:
-          'assets/images/certificates/Courses/Git/The Git & GitHub Bootcamp.jpg',
+          'assets/images/certificates/Courses/Git/The Git and GitHub Bootcamp.jpg',
       issueDate: 'Oct 2022',
       skills: ['Git', 'GitHub'],
       credentialLink: ProjectLink(

@@ -31,8 +31,9 @@ class AboutPage extends StatelessWidget {
           _buildServices(context),
           const SizedBox(height: 50),
           _buildLanguages(context),
+          const SizedBox(height: 50),
+          _buildGitHubActivity(context),
           const SizedBox(height: 35),
-          // TODO: later add testimonials
           // buildTestimonials(context),
           const SizedBox(height: 30),
           // const _ClientsSection(),
@@ -117,6 +118,66 @@ class AboutPage extends StatelessWidget {
           children: languages
               .map((lang) => _LanguageCard(language: lang))
               .toList(),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildGitHubActivity(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('My Activity', style: AppTextStyles.h3),
+        const SizedBox(height: 20),
+        LayoutBuilder(
+          builder: (context, constraints) {
+            return Column(
+              children: [
+                // Year heatmap contribution graph
+                GradientBox(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Contribution Overview',
+                        style: AppTextStyles.h4.copyWith(fontSize: 16),
+                      ),
+                      const SizedBox(height: 15),
+                      SmartImageWidget(
+                        padding: const EdgeInsets.all(10),
+                        borderRadius: BorderRadius.circular(8),
+                        backgroundColor: AppColors.white1,
+                        source:
+                            'assets/images/gifs/wakatime-frequency-of-days.gif',
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                // Weekly activity graph
+                GradientBox(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Weekly Activity',
+                        style: AppTextStyles.h4.copyWith(fontSize: 16),
+                      ),
+                      const SizedBox(height: 15),
+                      SmartImageWidget(
+                        padding: const EdgeInsets.all(10),
+                        borderRadius: BorderRadius.circular(8),
+                        backgroundColor: AppColors.white1,
+                        source: 'assets/images/gifs/wakatime-weekdays.gif',
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            );
+          },
         ),
       ],
     );
