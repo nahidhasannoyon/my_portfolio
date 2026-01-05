@@ -42,7 +42,7 @@ dependencies:
   styled_text: ^8.1.0
   lottie: ^3.3.2
   animated_text_kit: ^4.3.0
-  google_fonts: ^6.2.1
+  google_fonts: ^6.3.3
   flutter_screenutil: ^5.9.3
 
 dev_dependencies:
@@ -75,7 +75,6 @@ flutter:
     - assets/images/certificates/Courses/Git/
     - assets/images/for_mouse_cursor/
     - assets/icons/
-    - assets/docs/
     - assets/jsons/
 
   # An image asset can refer to one or more resolution-specific "variants", see

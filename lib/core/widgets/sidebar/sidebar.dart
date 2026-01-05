@@ -47,9 +47,7 @@ class _SidebarState extends State<Sidebar> {
       ),
       clipBehavior: Clip.antiAlias,
       child: SingleChildScrollView(
-        physics: isDesktop
-            ? const NeverScrollableScrollPhysics()
-            : const ClampingScrollPhysics(),
+        physics: const ClampingScrollPhysics(),
         child: Padding(
           padding: EdgeInsets.all(
             Responsive.getValue(context, mobile: 15, tablet: 30),
@@ -235,7 +233,7 @@ class _SidebarState extends State<Sidebar> {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: () {
-          _launchUrl('assets/docs/Nahid Hasan Noyon Resume.pdf');
+          _launchUrl('https://bit.ly/nahidhasannoyon-resume');
         },
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
